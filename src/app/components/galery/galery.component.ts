@@ -21,6 +21,5 @@ export class GaleryComponent implements OnInit {
     this.packageService.setCategorySelected(category);
     this.categorySelected = this.packageService.getCategorySelected();
     this.packageList = this.packageService.getPackageList();
-    console.log(this.categorySelected);
   }
 }

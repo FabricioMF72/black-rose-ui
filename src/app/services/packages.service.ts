@@ -1,10 +1,11 @@
 import { Injectable, signal } from '@angular/core';
+import Package from '../models/package';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PackagesService {
-  private packageList = signal([
+  private packageList = signal<Package[]>([
     {
       category: 'Weddings',
       description: 'Capture the magic of your special day with stunning wedding photography. From the intimate moments to the grand celebrations, we ensure every emotion and detail is beautifully preserved.',
@@ -39,12 +40,12 @@ export class PackagesService {
 
   constructor() {}
 
-  getPackageList() {
+  getPackageList():Package[] {
     return this.packageList();
   }
 
-  getCategorySelected() {
-    return this.packageList().find(pkg => pkg.selected === true);
+  getCategorySelected():Package {
+    return this.packageList().find(pkg => pkg.selected === true)!;
   }
 
   setCategorySelected(category: string) {
