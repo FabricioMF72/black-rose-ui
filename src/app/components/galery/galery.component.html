@@ -1,6 +1,6 @@
 <section class="py-20 bg-gray-50">
     <div class="max-w-6xl mx-auto px-4">
-      <h2 class="text-center font-serif text-5xl mb-8">PACKAGES</h2>
+      <h2 class="text-center font-serif text-5xl mb-8">Galery</h2>
       <ul class="grid lg:grid-cols-5 sm:grid-cols-2 md:grid-cols-2">
         @for (package of packageList; track $index) {
           <li [ngClass]="{'font-bold':package.selected}" class="text-3xl hover:font-bold font-serif text-center mb-12" (click)="changeCategory(package.category)">{{package.category}}</li>

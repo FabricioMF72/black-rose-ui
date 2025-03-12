@@ -1,6 +1,12 @@
-<div class="min-h-screen bg-neutral-50">
-    <app-hero></app-hero>
-    <app-about></app-about>
-    <app-galery></app-galery>
-    <app-contact-form></app-contact-form>
+<div class="relative h-screen bg-primary">
+    <div class="absolute top-0 left-0 bg-white w-full flex justify-between items-center p-6 z-10">
+        <h2 [routerLink]="['/']" class="text-bluegray-900 text-2xl font-serif">Contact</h2>
+        <h2 [routerLink]="['/']" class="text-bluegray-900 text-2xl font-serif">Kendra Sáenz</h2>
+        <nav class="space-x-6">
+          <a [routerLink]="['/blog']" class="text-lg font-light hover:underline">Blog</a>
+          <a [routerLink]="['/pricing']" class=" text-lg font-light hover:underline">Pricing</a>
+        </nav>
+      </div>
+    <router-outlet>
+    </router-outlet>
 </div>

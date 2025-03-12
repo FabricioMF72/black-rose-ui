@@ -1,27 +1,18 @@
-<section class="relative h-screen">
-  <div class="absolute inset-0">
-    <img src="main-image.jpg" alt="Fotografía artística" class="w-full h-full object-cover">
+
+  
+  <<div class="relative w-full h-screen flex">
+    <img src="hero-image-left.jpg" alt="Photography Left" class="w-1/2 h-full object-cover">
+    <img src="hero-image-right.jpg" alt="Photography Right" class="w-1/2 h-full object-cover">
     <div class="absolute inset-0 bg-black/40"></div>
-  </div>
-  <div class="relative h-full flex items-center justify-center text-center">
-    <div class="space-y-6">
-      <h1 class="text-5xl md:text-7xl font-serif text-white">{{'Kendra Sáenz PHOTOGRAPHY' | titlecase}}</h1>
+    <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
+      <h1 class="text-5xl md:text-7xl font-serif text-white">
+        {{ 'Kendra Sáenz PHOTOGRAPHY' | titlecase }}
+      </h1>
       <p class="text-xl text-white font-light">Capturing Unforgettable Moments</p>
-      <div class=" text-center space-y-12">
-        <div class="text-center text-white text-5xl font-bold">
-          Services offered
-          <div class="relative inline-grid grid-cols-1 grid-rows-1 gap-12 overflow-hidden">
-            <span class="animate-word col-span-full row-span-full">Weddings</span>
-            <span class="animate-word-delay-1 col-span-full row-span-full">Family</span>
-            <span class="animate-word-delay-2 col-span-full row-span-full">Maternity</span>
-            <span class="animate-word-delay-3 col-span-full row-span-full">Sweet 15</span>
-            <span class="animate-word-delay-4 col-span-full row-span-full">Outdoor</span>
-          </div>
-        </div>
-      </div>
+      
       <button (click)="scrollToServices()"
-        class="px-8 py-3 font-serif bg-white text-gray-900 hover:bg-gray-100 hover:scale-110 hover:transition-duration-100 rounded-full">
-        Packages</button>
+        class="mt-6 px-8 py-3 font-serif bg-white text-gray-900 hover:bg-gray-100 hover:scale-110 transition-transform duration-100 rounded-full">
+        Packages
+      </button>
     </div>
   </div>
-</section>
