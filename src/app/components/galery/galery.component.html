@@ -9,7 +9,7 @@
         }
       </ul>
       <p class="text-center font-sans mb-8 text-2xl">{{categorySelected!.description}}</p>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
         <div *ngFor="let image of categorySelected!.imageList" class="relative group cursor-pointer" >
           <img [src]="image" [alt]="categorySelected!.category" class="w-full h-80 object-cover rounded-lg transition transform group-hover:scale-105">
           <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition rounded-lg flex items-center justify-center">
