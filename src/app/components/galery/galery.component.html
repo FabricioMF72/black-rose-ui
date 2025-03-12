@@ -1,12 +1,14 @@
-<section class="py-20 bg-gray-50">
+<section class="py-20 bg-galery">
     <div class="max-w-6xl mx-auto px-4">
-      <h2 class="text-center font-serif text-5xl mb-8">Galery</h2>
+      <h1 class="text-center font-serif text-5xl mb-8">Galery</h1>
       <ul class="grid lg:grid-cols-5 sm:grid-cols-2 md:grid-cols-2">
         @for (package of packageList; track $index) {
-          <li [ngClass]="{'font-bold':package.selected}" class="text-3xl hover:font-bold font-serif text-center mb-12" (click)="changeCategory(package.category)">{{package.category}}</li>
+          <li [ngClass]="{'font-bold text-gray-900':package.selected}" class="text-4xl hover:font-bold text-gray-600 font-serif text-center mb-12" (click)="changeCategory(package.category)">
+            <h2>{{package.category}}</h2>
+          </li>
         }
       </ul>
-      <p class="text-center font-serif mb-8">{{categorySelected!.description}}</p>
+      <p class="text-center font-sans mb-8 text-2xl">{{categorySelected!.description}}</p>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div *ngFor="let image of categorySelected!.imageList" class="relative group cursor-pointer" >
           <img [src]="image" [alt]="categorySelected!.category" class="w-full h-80 object-cover rounded-lg transition transform group-hover:scale-105">

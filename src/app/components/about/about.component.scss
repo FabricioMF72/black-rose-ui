@@ -1,0 +1,7 @@
+.fab {
+    transition: transform 0.2s ease-in-out;
+}
+
+.fab:hover {
+    transform: scale(1.2);
+}
