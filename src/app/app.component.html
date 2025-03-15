@@ -1,14 +1,5 @@
 <div class="relative h-screen bg-primary font-serif">
-  <nav
-    class="absolute top-0 left-0 bg-white w-full flex justify-between items-center sm:flex-row lg:flex-row md:flex-row p-6 z-10">
-    <a [routerLink]="['/']" class="text-bluegray-900 lg:text-2xl sm:text-1xl flex-1 text-left">Contact</a>
-    <a [routerLink]="['/']" class="text-bluegray-900 lg:text-2xl sm:text-2xl flex-1 text-center">Kendra
-      Sáenz</a>
-    <div class="space-x-6 flex-1 text-right">
-      <a [routerLink]="['/blog']" class="lg:text-2xl sm:text-1xl font-light sm:text-1xl hover:underline">Blog</a>
-      <a [routerLink]="['/pricing']" class="lg:text-2xl sm:text-1xl font-light hover:underline">Pricing</a>
-    </div>
-  </nav>
-  <router-outlet>
-  </router-outlet>
+  <app-header></app-header>
+  <router-outlet></router-outlet>
+  <app-footer></app-footer>
 </div>
