@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
-import { PricingComponent } from './components/pricing/pricing.component';
-import { HomeComponent } from './components/home/home.component';
-import { BlogComponent } from './components/blog/blog.component';
+import { PricingComponent } from './pages/pricing/pricing.component';
+import { BlogComponent } from './pages/blog/blog.component';
+import { HomeComponent } from './pages/home/home.component';
 
 export const routes: Routes = [
     {

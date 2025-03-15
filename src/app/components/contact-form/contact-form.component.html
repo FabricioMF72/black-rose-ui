@@ -1,23 +1,61 @@
-<section class="py-20 h-screen bg-contact">
-    <div class="max-w-4xl mx-auto px-4 ">
-      <h2 class="text-4xl font-serif text-center mb-12">I AM EXCITED TO <br>
-         CONTACT WITH YOU</h2>
-      <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="space-y-6">
-        <div class="grid md:grid-cols-2 gap-6">
-          <div>
-            <label class="block text-sm font-medium text-gray-700">Name</label>
-            <input formControlName="name" type="text" class="mt-1 w-full rounded-lg border-gray-300 shadow-sm">
+<section class="grid grid-cols-1 md:grid-cols-2 md:grid-rows-[auto,auto] gap-4 min-h-screen py-20 bg-contact text-center">
+  <h1 class="col-span-1 md:col-span-2 font-serif text-5xl ">Contact me</h1>
+  <div class="row-span-1 md:row-span-4 col-start-1 row-start-2 px-8 lg:w-1/2 lg:ml-auto">
+    <h2 class="mt-6 text-4xl font-serif text-center">I'm excited to <br>
+      contact with you</h2>
+    <p class="mt-6 text-2xl font-serif text-gray-600 leading-relaxed "> Whether you have a question, a project in mind, or just want to say hello, I’d love to hear from you! Feel free to reach out, and I’ll get back to you as soon as possible. Let’s connect and bring your vision to life with beautiful, meaningful photography. Every story is unique, and I’m excited to be part of yours. Don’t hesitate to send me a message—I’m here to help and make your experience as seamless and enjoyable as possible!</p>
+  </div>
+  <div class="row-span-1 md:row-span-4 col-start-1 md:col-start-2 row-start-3 md:row-start-2 max-w-2xl sm:mt-6 lg:mt-18 px-4">
+    <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="space-y-6">
+      <div class="grid grid-cols-1 gap-4">
+        <div>
+          <label class="block text-sm font-medium text-gray-700">First name</label>
+          <input formControlName="firstname" type="text" class="mt-1 w-full rounded-lg border-gray-300 shadow-sm">
+          <div *ngIf="contactForm.get('firstname')?.invalid && contactForm.get('firstname')?.touched" class="text-red-600 text-sm">
+            First name is required.
           </div>
-          <div>
-            <label class="block text-sm font-medium text-gray-700">Email</label>
-            <input formControlName="email" type="email" class="mt-1 w-full rounded-lg border-gray-300 shadow-sm">
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700">Last name</label>
+          <input formControlName="lastname" type="text" class="mt-1 w-full rounded-lg border-gray-300 shadow-sm">
+          <div *ngIf="contactForm.get('lastname')?.invalid && contactForm.get('lastname')?.touched" class="text-red-600 text-sm">
+            Last name is required.
+          </div>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700">Email</label>
+          <input formControlName="email" type="email" class="mt-1 w-full rounded-lg border-gray-300 shadow-sm">
+          <div *ngIf="contactForm.get('email')?.invalid && contactForm.get('email')?.touched" class="text-red-600 text-sm">
+            <div *ngIf="contactForm.get('email')?.errors?.['required']">Email is required.</div>
+            <div *ngIf="contactForm.get('email')?.errors?.['email']">Invalid email address.</div>
+          </div>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700">What date are you looking to book?</label>
+          <input formControlName="date" type="date" class="mt-1 w-full rounded-lg border-gray-300 shadow-sm">
+          <div *ngIf="contactForm.get('date')?.invalid && contactForm.get('date')?.touched" class="text-red-600 text-sm">
+            Date is required.
+          </div>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700">What type of session are you looking for?</label>
+          <select formControlName="service" class="mt-1 text-center w-full rounded-lg border-gray-300 shadow-sm outline-none">
+            <option>Wedding</option>
+            <option>Outdoor</option>
+            <option>Personal</option>
+          </select>
+          <div *ngIf="contactForm.get('service')?.invalid && contactForm.get('service')?.touched" class="text-red-600 text-sm">
+            Service type is required.
           </div>
         </div>
         <div>
           <label class="block text-sm font-medium text-gray-700">Message</label>
           <textarea formControlName="message" rows="4" class="mt-1 w-full rounded-lg border-gray-300 shadow-sm"></textarea>
         </div>
-        <button type="submit" class="w-full py-3 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition">Send</button>
-      </form>
-    </div>
-  </section>
+        <div>
+          <button type="submit" class="w-full py-3 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition">Send</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>
