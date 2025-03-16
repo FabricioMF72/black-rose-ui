@@ -1,4 +1,4 @@
-<div class="container mx-auto px-4 py-6">
+<section class="container mx-auto px-4 py-6">
   <div class="grid grid-cols-1 gap-6 p-8">
     <app-article-item 
       *ngFor="let article of articles; let i = index" 
@@ -10,4 +10,4 @@
       [layout]="i % 2 === 0 ? 'normal' : 'reverse'">
     </app-article-item>
   </div>
-</div>
+</section>

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit, Signal } from '@angular/core';
+import { Component} from '@angular/core';
 import { PackagesService } from '../../services/packages.service';
 
 @Component({
@@ -9,13 +9,11 @@ import { PackagesService } from '../../services/packages.service';
   templateUrl: './gallery.component.html',
   styleUrl: './gallery.component.scss'
 })
-export class GalleryComponent implements OnInit {
+export class GalleryComponent {
   packageList = this.packageService.getPackageList();
   categorySelected = this.packageService.getCategorySelected();
 
   constructor(private packageService: PackagesService) {}
-
-   ngOnInit() {}
 
   changeCategory(category: string) {
     this.packageService.setCategorySelected(category);
