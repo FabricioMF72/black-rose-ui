@@ -9,37 +9,37 @@
     <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="space-y-6">
       <div class="grid grid-cols-1 gap-4">
         <div>
-          <label class="block text-sm font-medium text-gray-700">First name</label>
-          <input formControlName="firstname" type="text" class="mt-1 w-full rounded-lg border-gray-300 shadow-sm">
+          <label for="firstname" class="block text-sm font-medium text-gray-700">First name</label>
+          <input id="firstname" formControlName="firstname" type="text" class="mt-1 w-full rounded-lg border-gray-300 shadow-sm">
           <div *ngIf="contactForm.get('firstname')?.invalid && contactForm.get('firstname')?.touched" class="text-red-600 text-sm">
             First name is required.
           </div>
         </div>
         <div>
-          <label class="block text-sm font-medium text-gray-700">Last name</label>
-          <input formControlName="lastname" type="text" class="mt-1 w-full rounded-lg border-gray-300 shadow-sm">
+          <label for="lastname" class="block text-sm font-medium text-gray-700">Last name</label>
+          <input id="lastname" formControlName="lastname" type="text" class="mt-1 w-full rounded-lg border-gray-300 shadow-sm">
           <div *ngIf="contactForm.get('lastname')?.invalid && contactForm.get('lastname')?.touched" class="text-red-600 text-sm">
             Last name is required.
           </div>
         </div>
         <div>
-          <label class="block text-sm font-medium text-gray-700">Email</label>
-          <input formControlName="email" type="email" class="mt-1 w-full rounded-lg border-gray-300 shadow-sm">
+          <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+          <input id="email" formControlName="email" type="email" class="mt-1 w-full rounded-lg border-gray-300 shadow-sm">
           <div *ngIf="contactForm.get('email')?.invalid && contactForm.get('email')?.touched" class="text-red-600 text-sm">
             <div *ngIf="contactForm.get('email')?.errors?.['required']">Email is required.</div>
             <div *ngIf="contactForm.get('email')?.errors?.['email']">Invalid email address.</div>
           </div>
         </div>
         <div>
-          <label class="block text-sm font-medium text-gray-700">What date are you looking to book?</label>
-          <input formControlName="date" type="date" class="mt-1 w-full rounded-lg border-gray-300 shadow-sm">
+          <label for="date" class="block text-sm font-medium text-gray-700">What date are you looking to book?</label>
+          <input id="date" formControlName="date" type="date" class="mt-1 w-full rounded-lg border-gray-300 shadow-sm">
           <div *ngIf="contactForm.get('date')?.invalid && contactForm.get('date')?.touched" class="text-red-600 text-sm">
             Date is required.
           </div>
         </div>
         <div>
-          <label class="block text-sm font-medium text-gray-700">What type of session are you looking for?</label>
-          <select formControlName="service" class="mt-1 text-center w-full rounded-lg border-gray-300 shadow-sm outline-none">
+          <label for="service" class="block text-sm font-medium text-gray-700">What type of session are you looking for?</label>
+          <select id="service" formControlName="service" class="mt-1 text-center w-full rounded-lg border-gray-300 shadow-sm outline-none" aria-labelledby="service">
             <option>Wedding</option>
             <option>Outdoor</option>
             <option>Personal</option>
@@ -49,8 +49,8 @@
           </div>
         </div>
         <div>
-          <label class="block text-sm font-medium text-gray-700">Message</label>
-          <textarea formControlName="message" rows="4" class="mt-1 w-full rounded-lg border-gray-300 shadow-sm"></textarea>
+          <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
+          <textarea id="message" formControlName="message" rows="4" class="mt-1 w-full rounded-lg border-gray-300 shadow-sm"></textarea>
         </div>
         <div>
           <button type="submit" class="w-full py-3 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition">Send</button>
