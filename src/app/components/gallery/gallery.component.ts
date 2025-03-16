@@ -6,10 +6,10 @@ import { PackagesService } from '../../services/packages.service';
   selector: 'app-galery',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './galery.component.html',
-  styleUrl: './galery.component.scss'
+  templateUrl: './gallery.component.html',
+  styleUrl: './gallery.component.scss'
 })
-export class GaleryComponent implements OnInit {
+export class GalleryComponent implements OnInit {
   packageList = this.packageService.getPackageList();
   categorySelected = this.packageService.getCategorySelected();
 

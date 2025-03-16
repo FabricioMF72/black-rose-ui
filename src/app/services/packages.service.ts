@@ -19,18 +19,6 @@ export class PackagesService {
       imageList: []
     },
     {
-      category: 'Maternity',
-      description: 'Embrace the beauty of motherhood with a maternity photoshoot. We capture the joy, anticipation, and glow of this special journey, creating lasting memories for you and your baby.',
-      selected: false,
-      imageList: []
-    },
-    {
-      category: 'Sweet 15',
-      description: 'Celebrate this milestone with a magical Quinceañera photoshoot. Whether elegant, fun, or glamorous, we capture the essence of your unique personality and style.',
-      selected: false,
-      imageList: []
-    },
-    {
       category: 'Outdoor',
       description: 'Take advantage of natural light and breathtaking scenery with an outdoor photoshoot. Whether for portraits, couples, or special occasions, we create stunning, natural-looking images.',
       selected: false,
