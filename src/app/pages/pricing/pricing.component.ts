@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pricing',
@@ -9,6 +10,7 @@ import { Component } from '@angular/core';
   styleUrl: './pricing.component.scss'
 })
 export class PricingComponent {
+  private readonly router = inject(Router);
   pricingPackages = [
     {
       name: "Wedding",
@@ -51,6 +53,6 @@ export class PricingComponent {
     }
   ];
   contactForPackage(packageName: string): void {  
-    document.getElementById("services")?.scrollIntoView({ behavior: "smooth" });
+    this.router.navigate(['/contact'], { queryParams: { package: packageName } });
   }
 }

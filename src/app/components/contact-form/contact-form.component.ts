@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Input, input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from "@angular/forms";
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-contact-form',
@@ -10,14 +11,19 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from "@angula
   styleUrl: './contact-form.component.scss'
 })
 export class ContactFormComponent {
+  packageName: string | null = null;
   contactForm: FormGroup;
-  constructor(private fb: FormBuilder) {
+  
+  constructor(private fb: FormBuilder,private route: ActivatedRoute) {
+    this.route.queryParams.subscribe(params => {
+      this.packageName = params['package'] || null;
+    });
     this.contactForm = this.fb.group({
       firstname: ["", Validators.required],
       lastname: ["", Validators.required],
       email: ["", [Validators.required, Validators.email]],
       date: ["", Validators.required],
-      service: ["", Validators.required],
+      service: [this.packageName, Validators.required],
       message: [""]
     });
   }
