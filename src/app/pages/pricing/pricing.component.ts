@@ -11,7 +11,7 @@ import { Component } from '@angular/core';
 export class PricingComponent {
   pricingPackages = [
     {
-      name: "Básico",
+      name: "Wedding",
       price: "$599",
       featured: false,
       features: [
@@ -23,9 +23,9 @@ export class PricingComponent {
       ]
     },
     {
-      name: "Premium",
-      price: "$999",
-      featured: true,
+      name: "Outdoor",
+      price: "$499",
+      featured: false,
       features: [
         "4 horas de cobertura",
         "200 fotos editadas",
@@ -36,8 +36,8 @@ export class PricingComponent {
       ]
     },
     {
-      name: "Elite",
-      price: "$1499",
+      name: "Family",
+      price: "$499",
       featured: false,
       features: [
         "6 horas de cobertura",
