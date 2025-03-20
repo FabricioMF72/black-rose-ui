@@ -8,19 +8,19 @@ export class PackagesService {
   private packageList = signal<Package[]>([
     {
       category: 'Weddings',
-      description: 'Capture the magic of your special day with stunning wedding photography. From the intimate moments to the grand celebrations, we ensure every emotion and detail is beautifully preserved.',
+      description: 'Your special day deserves to be captured with attention to detail and heartfelt sensitivity. I strive for every bride to see me as a trusted friend, there to help with anything they need while I document each moment with honesty and authenticity.',
       selected: true,
       imageList: ["galery-1.jpg", "galery-2.jpg", "galery-3.jpg", "galery-4.jpg", "galery-5.jpg", "galery-6.jpg"]
     },
     {
       category: 'Family',
-      description: 'Celebrate the love and connection of your family with a heartwarming photo session. Whether at home or outdoors, we create timeless memories that you will cherish forever.',
+      description: 'Preserve the bonds and shared laughter with family photo sessions that reflect the essence of your home and loved ones.',
       selected: false,
-      imageList: []
+      imageList: ["outdoor-1.jpg", "outdoor-2.jpg", "outdoor-3.jpg", "outdoor-4.jpg", "outdoor-5.jpg", "outdoor-6.jpg"]
     },
     {
       category: 'Outdoor',
-      description: 'Take advantage of natural light and breathtaking scenery with an outdoor photoshoot. Whether for portraits, couples, or special occasions, we create stunning, natural-looking images.',
+      description: 'Relaxed sessions in natural settings that highlight your personality and tell your story in a genuine way.',
       selected: false,
       imageList: ["outdoor-1.jpg", "outdoor-2.jpg", "outdoor-3.jpg", "outdoor-4.jpg", "outdoor-5.jpg", "outdoor-6.jpg"]
     }

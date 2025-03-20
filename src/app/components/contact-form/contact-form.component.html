@@ -1,55 +1,83 @@
-<section class="grid grid-cols-1 md:grid-cols-2 md:grid-rows-[auto,auto] gap-4 min-h-screen py-20 bg-contact text-center">
-  <h1 class="col-span-1 md:col-span-2 font-serif text-5xl ">Contact me</h1>
-  <div class="row-span-1 md:row-span-4 col-start-1 row-start-2 px-8 lg:w-1/2 lg:ml-auto">
-    <h2 class="mt-6 text-4xl font-serif text-center">I'm excited to <br>
-      contact with you</h2> 
-    <p class="mt-6 text-2xl font-serif text-gray-600 leading-relaxed "> Whether you have a question, a project in mind, or just want to say hello, I’d love to hear from you! Feel free to reach out, and I’ll get back to you as soon as possible. Let’s connect and bring your vision to life with beautiful, meaningful photography. Every story is unique, and I’m excited to be part of yours. Don’t hesitate to send me a message—I’m here to help and make your experience as seamless and enjoyable as possible!</p>
+<section class="grid grid-cols-1 md:grid-cols-2 md:grid-rows-[auto,auto] gap-4 min-h-screen py-20 bg-contact text-center font-serif">
+  <h1 class="col-span-1 md:col-span-2 text-6xl">Contact me</h1>
+  <div class="row-span-1 md:row-span-4 col-start-1 row-start-2 max-w-2xl w lg:w-1/2 sm:mt-6 lg:mt-6 px-4 lg:ml-auto">
+    <h2 class="mt-6 text-4xl text-left">Ready to book your session or have questions? Send me a message! I’d love to work with you and create photos that truly tell your story.</h2> 
+    <ul class="p-4">
+      <li class="flex items-center justify-content-start space-x-2 mt-6">
+        <i class="fa-regular fa-calendar-days text-2xl"></i>
+        <p>Book your date in advance</p>
+      </li>
+      <li class="flex items-center justify-content-start space-x-2 mt-6">
+        <i class="fa-solid fa-envelope text-2xl"></i>
+        <p>Send me a message for a personalized quote</p>
+      </li>
+      <li class="flex items-center justify-content-start space-x-2 mt-6">
+        <i class="fa-solid fa-location-dot text-2xl"></i>
+        <p>Location: Uvita & Pérez Zeledón, Costa Rica</p>
+      </li>
+    </ul>
+    <ul>
+      <li class="flex items-center justify-between mt-6">
+        <div>
+          <i class="fab fa-instagram text-2xl"></i>
+          <p>Instagram</p>
+        </div>
+        <div>
+          <i class="fab fa-whatsapp text-2xl"></i>
+          <p>WhatsApp</p>
+        </div>
+        <div>
+          <i class="fa-regular fa-envelope text-2xl"></i>
+          <p>Email</p>
+        </div>
+      </li>
+    </ul>
   </div>
-  <div class="row-span-1 md:row-span-4 col-start-1 md:col-start-2 row-start-3 md:row-start-2 max-w-2xl w lg:w-1/2 sm:mt-6 lg:mt-18 px-4">
+  <div class="row-span-1 md:row-span-4 col-start-1 md:col-start-2 row-start-3 md:row-start-2 max-w-2xl w lg:w-1/2 sm:mt-6 lg:mt-8 px-4">
     <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="space-y-6">
       <div class="grid grid-cols-1 gap-4">
         <div>
-          <label for="firstname" class="block text-sm font-medium text-gray-700">First name</label>
+          <label for="firstname" class="block font-medium text-gray-700">First name</label>
           <input id="firstname" formControlName="firstname" type="text" class="mt-1 w-full rounded-lg border-gray-300 shadow-sm">
-          <div *ngIf="contactForm.get('firstname')?.invalid && contactForm.get('firstname')?.touched" class="text-red-600 text-sm">
+          <div *ngIf="contactForm.get('firstname')?.invalid && contactForm.get('firstname')?.touched" class="text-red-600">
             First name is required.
           </div>
         </div>
         <div>
-          <label for="lastname" class="block text-sm font-medium text-gray-700">Last name</label>
+          <label for="lastname" class="block font-medium text-gray-700">Last name</label>
           <input id="lastname" formControlName="lastname" type="text" class="mt-1 w-full rounded-lg border-gray-300 shadow-sm">
-          <div *ngIf="contactForm.get('lastname')?.invalid && contactForm.get('lastname')?.touched" class="text-red-600 text-sm">
+          <div *ngIf="contactForm.get('lastname')?.invalid && contactForm.get('lastname')?.touched" class="text-red-600">
             Last name is required.
           </div>
         </div>
         <div>
-          <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+          <label for="email" class="block font-medium text-gray-700">Email</label>
           <input id="email" formControlName="email" type="email" class="mt-1 w-full rounded-lg border-gray-300 shadow-sm">
-          <div *ngIf="contactForm.get('email')?.invalid && contactForm.get('email')?.touched" class="text-red-600 text-sm">
+          <div *ngIf="contactForm.get('email')?.invalid && contactForm.get('email')?.touched" class="text-red-600">
             <div *ngIf="contactForm.get('email')?.errors?.['required']">Email is required.</div>
             <div *ngIf="contactForm.get('email')?.errors?.['email']">Invalid email address.</div>
           </div>
         </div>
         <div>
-          <label for="date" class="block text-sm font-medium text-gray-700">What date are you looking to book?</label>
+          <label for="date" class="block font-medium text-gray-700">What date are you looking to book?</label>
           <input id="date" formControlName="date" type="date" class="mt-1 w-full rounded-lg border-gray-300 shadow-sm">
-          <div *ngIf="contactForm.get('date')?.invalid && contactForm.get('date')?.touched" class="text-red-600 text-sm">
+          <div *ngIf="contactForm.get('date')?.invalid && contactForm.get('date')?.touched" class="text-red-600">
             Date is required.
           </div>
         </div>
         <div>
-          <label for="service" class="block text-sm font-medium text-gray-700">What type of session are you looking for?</label>
+          <label for="service" class="block font-medium text-gray-700">What type of session are you looking for?</label>
           <select id="service" formControlName="service" class="mt-1 text-center w-full rounded-lg border-gray-300 shadow-sm outline-none" aria-labelledby="service">
             <option>Wedding</option>
             <option>Outdoor</option>
             <option>Personal</option>
           </select>
-          <div *ngIf="contactForm.get('service')?.invalid && contactForm.get('service')?.touched" class="text-red-600 text-sm">
+          <div *ngIf="contactForm.get('service')?.invalid && contactForm.get('service')?.touched" class="text-red-600">
             Service type is required.
           </div>
         </div>
         <div>
-          <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
+          <label for="message" class="block font-medium text-gray-700">Message</label>
           <textarea id="message" formControlName="message" rows="4" class="mt-1 w-full rounded-lg border-gray-300 shadow-sm"></textarea>
         </div>
         <div>
