@@ -1,6 +1,6 @@
 <div class="flex flex-col items-center justify-center min-h-screen bg-about">
   <section class="w-full lg:p-28 md:p-12 article-image-bg h-screen">
-    <img [src]="article()!.images[0]" loading="lazy" alt="Article Image" class="mx-auto lg:w-1/2 md:w-3/4 sm:w-full h-full object-cover">
+    <img [src]="article()!.images[0]" loading="lazy" alt="Article Image wedding" class="mx-auto lg:w-1/2 md:w-3/4 sm:w-full h-full object-cover">
   </section>
   <h1 class="text-6xl font-serif my-4 p-8 md:text-center sm:text-justify">{{ article()!.title }}</h1>
   <p class="text-lg text-gray-600 mb-6 text-right">{{ article()!.location }}</p>
@@ -8,8 +8,12 @@
     <p *ngFor="let paragraph of article()!.paragraphs" class="lg:text-2xl md:text-sm text-gray-800 leading-relaxed mb-6">{{ paragraph }}</p>
   </section>
   <section class="w-full bg-article py-18">
-    <div class="grid grid-cols-1 md:grid-cols-3">
-      <img *ngFor="let photo of article()!.images" [src]="photo" loading="lazy" alt="Related Photo" class="w-full h-120 object-cover">
+    <div class="relative">
+      <button (click)="prevImages()" class="absolute left-0 top-1/2 transform -translate-y-1/2 text-white px-4 py-2 text-6xl rounded-full z-10"><i class="fa-solid fa-arrow-left"></i></button>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <img *ngFor="let photo of visibleImages" [src]="photo" loading="lazy" alt="Carmen Kevin Wedding" class="w-full h-120 object-cover">
+      </div>
+      <button (click)="nextImages()" class="absolute right-0 top-1/2 transform -translate-y-1/2 text-white px-4 py-2 text-6xl rounded-full z-10"><i class="fa-solid fa-arrow-right"></i></button>
     </div>
   </section>
 </div>

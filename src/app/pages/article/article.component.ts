@@ -13,6 +13,8 @@ import Article from '../../models/article';
 })
 export class ArticleComponent {
   article = signal<Article | undefined>(undefined);
+  visibleImages: string[] = [];
+  currentIndex: number = 0;
 
   constructor(private route: ActivatedRoute, private articleService: ArticleService) {}
 
@@ -20,6 +22,27 @@ export class ArticleComponent {
     this.route.params.subscribe(params => {
       const articleName = params['name'];
       this.article.set(this.articleService.getArticleByName(articleName));
+      this.updateVisibleImages();
     });
+  }
+
+  updateVisibleImages() {
+    const images = this.article()?.images || [];
+    this.visibleImages = images.slice(this.currentIndex, this.currentIndex + 3);
+  }
+
+  nextImages() {
+    const images = this.article()?.images || [];
+    if (this.currentIndex + 3 < images.length) {
+      this.currentIndex += 3;
+      this.updateVisibleImages();
+    }
+  }
+
+  prevImages() {
+    if (this.currentIndex - 3 >= 0) {
+      this.currentIndex -= 3;
+      this.updateVisibleImages();
+    }
   }
 }
