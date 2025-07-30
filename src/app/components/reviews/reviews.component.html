@@ -1,0 +1,39 @@
+<section class="py-20 bg-gray-50 font-serif">
+  <div class="container mx-auto px-4">
+    <h2 class="text-5xl font-serif text-center mb-16 text-gray-800">What My Clients Say</h2>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+      <div *ngFor="let review of reviews" class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow duration-300">
+        <div class="flex items-center mb-4">
+          <img 
+            [src]="review.photo" 
+            [alt]="review.name"
+            class="w-32 h-32 rounded-full object-cover mr-4"
+            onerror="this.src='https://via.placeholder.com/64x64/cccccc/666666?text=User'"
+          >
+          <div>
+            <h3 class="font-serif font-semibold text-xl text-gray-800">{{ review.name }}</h3>
+            <div class="flex items-center mb-1">
+              <div class="flex mr-2">
+                <i 
+                  *ngFor="let star of getStarsArray(review.rating)" 
+                  class="fas fa-star text-yellow-400 text-base"
+                  [class.text-gray-300]="star === 0"
+                ></i>
+              </div>
+              <span class="text-base text-gray-600 font-serif">({{ review.rating }}/5)</span>
+            </div>
+            <div class="flex items-center text-sm text-gray-500 font-serif">
+              <i [class]="review.platformIcon" class="mr-1"></i>
+              <span>{{ review.platform }}</span>
+            </div>
+          </div>
+        </div>
+        
+        <p class="text-gray-700 italic leading-relaxed font-serif text-base">
+          "{{ review.message }}"
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
