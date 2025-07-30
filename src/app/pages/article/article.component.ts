@@ -3,11 +3,12 @@ import { Component, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ArticleService } from '../../services/article.service';
 import Article from '../../models/article';
+import { ContactFormComponent } from "../../components/contact-form/contact-form.component";
 
 @Component({
   selector: 'app-article',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, ContactFormComponent],
   templateUrl: './article.component.html',
   styleUrl: './article.component.scss'
 })

@@ -17,11 +17,11 @@ export class PricingComponent {
       price: "$599",
       featured: false,
       features: [
-        "2 horas de cobertura",
-        "100 fotos editadas",
-        "Galería digital",
-        "5 impresiones 8x10",
-        "Entrega en 2 semanas"
+        "2 hours of coverage",
+        "100 edited photos",
+        "Digital gallery",
+        "5 prints 8x10",
+        "Delivery in 2 weeks"
       ]
     },
     {
@@ -29,12 +29,12 @@ export class PricingComponent {
       price: "$499",
       featured: false,
       features: [
-        "4 horas de cobertura",
-        "200 fotos editadas",
-        "Galería digital",
-        "10 impresiones 8x10",
-        "1 álbum fotográfico",
-        "Entrega en 1 semana"
+        "4 hours of coverage",
+        "200 edited photos",
+        "Digital gallery",
+        "10 prints 8x10",
+        "1 photo album",
+        "Delivery in 1 week"
       ]
     },
     {
@@ -42,13 +42,13 @@ export class PricingComponent {
       price: "$499",
       featured: false,
       features: [
-        "6 horas de cobertura",
-        "300 fotos editadas",
-        "Galería digital",
-        "15 impresiones 8x10",
-        "2 álbumes fotográficos",
-        "Video resumen",
-        "Entrega en 1 semana"
+        "6 hours of coverage",
+        "300 edited photos",
+        "Digital gallery",
+        "15 prints 8x10",
+        "2 photo albums",
+        "Summary video",
+        "Delivery in 1 week"
       ]
     }
   ];

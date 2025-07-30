@@ -16,13 +16,13 @@ export class PackagesService {
       category: 'Family',
       description: 'Preserve the bonds and shared laughter with family photo sessions that reflect the essence of your home and loved ones.',
       selected: false,
-      imageList: ["outdoor-1.jpg", "outdoor-2.jpg", "outdoor-3.jpg", "outdoor-4.jpg", "outdoor-5.jpg", "outdoor-6.jpg"]
+      imageList: ["familia-1.jpg", "familia-2.jpg", "familia-3.jpg", "familia-4.jpg", "familia-5.jpg", "familia-5.webp"]
     },
     {
       category: 'Outdoor',
       description: 'Relaxed sessions in natural settings that highlight your personality and tell your story in a genuine way.',
       selected: false,
-      imageList: ["outdoor-1.jpg", "outdoor-2.jpg", "outdoor-3.jpg", "outdoor-4.jpg", "outdoor-5.jpg", "outdoor-6.jpg"]
+      imageList: ["outdoor-1.webp", "outdoor-2.webp", "outdoor-3.webp", "outdoor-4.jpg", "outdoor-5.jpg", "outdoor-6.jpg"]
     }
   ]);
 

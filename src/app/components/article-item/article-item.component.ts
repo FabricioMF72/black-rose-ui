@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
-import { Router, RouterModule } from '@angular/router';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-article-item',
@@ -11,7 +11,7 @@ import { Router, RouterModule } from '@angular/router';
 })
 export class ArticleItemComponent {
   @Input() title!: string;
-  @Input() paragraph!: string;
+  @Input() paragraph!: { title: string; text: string; };
   @Input() image!: string[];
   @Input() link!: string;
   @Input() location!: string;

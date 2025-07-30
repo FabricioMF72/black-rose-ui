@@ -1,7 +1,8 @@
 export default interface Article {
     name: string;
     title: string;
-    paragraphs: string[];
+    mainParagraph: string;
+    paragraphs: { title: string; text: string }[];
     location: string;
     images: string[];
     link: string;

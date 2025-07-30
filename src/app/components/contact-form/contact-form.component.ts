@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, Input, input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from "@angular/forms";
 import { ActivatedRoute } from '@angular/router';
+import { MailService } from '../../services/mail.service';
 
 @Component({
   selector: 'app-contact-form',
@@ -13,8 +14,10 @@ import { ActivatedRoute } from '@angular/router';
 export class ContactFormComponent {
   packageName: string | null = null;
   contactForm: FormGroup;
-  
-  constructor(private fb: FormBuilder,private route: ActivatedRoute) {
+  isSending = false;
+  sendSuccess: boolean | null = null;
+
+  constructor(private fb: FormBuilder, private route: ActivatedRoute, private mailService: MailService) {
     this.route.queryParams.subscribe(params => {
       this.packageName = params['package'] || null;
     });
@@ -27,10 +30,20 @@ export class ContactFormComponent {
       message: [""]
     });
   }
+
   onSubmit(): void {
     if (this.contactForm.valid) {
-      console.log(this.contactForm.value);
-      // Handle form submission
+      this.isSending = true;
+      this.mailService.sendEmail(this.contactForm.value)
+        .then(() => {
+          this.isSending = false;
+          this.sendSuccess = true;
+          this.contactForm.reset();
+        })
+        .catch(() => {
+          this.isSending = false;
+          this.sendSuccess = false;
+        });
     } else {
       this.markAllAsTouched();
     }
@@ -40,5 +53,20 @@ export class ContactFormComponent {
     Object.values(this.contactForm.controls).forEach(control => {
       control.markAsTouched();
     });
+  }
+
+  openInstagram(): void {
+    // Replace with your Instagram URL
+    window.open('https://www.instagram.com/kendra_saenz_fotografia/', '_blank');
+  }
+
+  openWhatsApp(): void {
+    // Replace with your WhatsApp number
+    window.open('https://wa.me/+50671267591', '_blank');
+  }
+
+  openEmail(): void {
+    // Replace with your email address
+    window.open('mailto:your-email@example.com', '_blank');
   }
 }
