@@ -6,27 +6,40 @@
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 <!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
 
-
 <url>
   <loc>https://black-rose-ui-gamma.vercel.app/</loc>
-  <lastmod>2025-03-17T00:10:19+00:00</lastmod>
+  <lastmod>2025-07-29T00:10:19+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
   <loc>https://black-rose-ui-gamma.vercel.app/contact</loc>
-  <lastmod>2025-03-17T00:10:20+00:00</lastmod>
+  <lastmod>2025-07-29T00:10:20+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://black-rose-ui-gamma.vercel.app/blog</loc>
-  <lastmod>2025-03-17T00:10:20+00:00</lastmod>
+  <lastmod>2025-07-29T00:10:20+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://black-rose-ui-gamma.vercel.app/pricing</loc>
-  <lastmod>2025-03-17T00:10:20+00:00</lastmod>
+  <lastmod>2025-07-29T00:10:20+00:00</lastmod>
   <priority>0.80</priority>
 </url>
-
+<url>
+  <loc>https://black-rose-ui-gamma.vercel.app/article/carmen-kevin-intimate-wedding</loc>
+  <lastmod>2025-07-29T00:10:20+00:00</lastmod>
+  <priority>0.70</priority>
+</url>
+<url>
+  <loc>https://black-rose-ui-gamma.vercel.app/article/allison-juan-wedding</loc>
+  <lastmod>2025-07-29T00:10:20+00:00</lastmod>
+  <priority>0.70</priority>
+</url>
+<url>
+  <loc>https://black-rose-ui-gamma.vercel.app/article/barbara-daniel-wedding</loc>
+  <lastmod>2025-07-29T00:10:20+00:00</lastmod>
+  <priority>0.70</priority>
+</url>
 
 </urlset>

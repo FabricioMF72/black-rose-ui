@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
+import { SeoService } from '../../services/seo.service';
 
 @Component({
   selector: 'app-pricing',
@@ -11,6 +12,19 @@ import { Router } from '@angular/router';
 })
 export class PricingComponent {
   private readonly router = inject(Router);
+  
+  constructor(private seoService: SeoService) {}
+
+  ngOnInit() {
+    this.seoService.updateMetaTags({
+      title: 'Photography Packages & Pricing - Kendra Sáenz Photography',
+      description: 'Explore our wedding and photography packages in Costa Rica. Competitive pricing for professional photography services in Uvita and Pérez Zeledón.',
+      keywords: 'photography pricing, wedding packages Costa Rica, photography rates, Uvita photographer prices',
+      url: 'https://black-rose-ui-gamma.vercel.app/pricing',
+      type: 'website'
+    });
+  }
+
   pricingPackages = [
     {
       name: "Wedding",
