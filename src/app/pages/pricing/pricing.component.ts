@@ -17,9 +17,9 @@ export class PricingComponent {
 
   ngOnInit() {
     this.seoService.updateMetaTags({
-      title: 'Photography Packages & Pricing - Kendra Sáenz Photography',
-      description: 'Explore our wedding and photography packages in Costa Rica. Competitive pricing for professional photography services in Uvita and Pérez Zeledón.',
-      keywords: 'photography pricing, wedding packages Costa Rica, photography rates, Uvita photographer prices',
+      title: 'Photography Services - Events, Outdoor & Business | Kendra Sáenz Photography',
+      description: 'Discover our photography services in Costa Rica: Event coverage, outdoor sessions and business photography. Professional photography in Uvita and Pérez Zeledón.',
+      keywords: 'photography services Costa Rica, event coverage, outdoor sessions, business photography, weddings Uvita, photographer Pérez Zeledón',
       url: 'https://black-rose-ui-gamma.vercel.app/pricing',
       type: 'website'
     });
@@ -27,43 +27,49 @@ export class PricingComponent {
 
   pricingPackages = [
     {
-      name: "Wedding",
-      price: "$599",
-      featured: false,
+      name: "Events",
+      title: "Event Coverage",
+      idealFor: "small weddings, birthdays, parties, family gatherings, baby showers or special celebrations",
+      description: "I capture every detail without interrupting the moment. I integrate naturally into the environment, capturing real emotions, genuine smiles and the essence of the event.",
       features: [
-        "2 hours of coverage",
-        "100 edited photos",
-        "Digital gallery",
-        "5 prints 8x10",
-        "Delivery in 2 weeks"
-      ]
+        "Coverage by hours (2, 3 or more, as needed)",
+        "Digital gallery with edited photos",
+        "Delivery in 10 business days",
+        "Printed album option"
+      ],
+      highlight: "Perfect for those who want to remember every moment without worrying about photos"
     },
     {
       name: "Outdoor",
-      price: "$499",
-      featured: false,
+      title: "Outdoor Sessions",
+      idealFor: "personal portraits, couples, families, pregnancies or creative sessions",
+      description: "I accompany you in a relaxed experience, where I guide you in natural poses while you enjoy the environment. I work in locations like beaches, mountains, rivers or green areas, always seeking your essence in each image.",
       features: [
-        "4 hours of coverage",
-        "200 edited photos",
-        "Digital gallery",
-        "10 prints 8x10",
-        "1 photo album",
-        "Delivery in 1 week"
-      ]
+        "1 hour session",
+        "Location of choice (I can suggest options)",
+        "Digital gallery with 25 edited photos",
+        "Option for additional photos or physical album"
+      ],
+      highlight: "For those who love spontaneous moments, nature and authentic memories"
     },
     {
-      name: "Family",
-      price: "$499",
-      featured: false,
+      name: "Business",
+      title: "Business Photography",
+      idealFor: "entrepreneurs, personal brands, restaurants, accommodations or products",
+      description: "I help you convey the value of your brand with professional images. Whether it's content for social media, photos of spaces or services, we take care of aesthetics and message together.",
       features: [
-        "6 hours of coverage",
-        "300 edited photos",
-        "Digital gallery",
-        "15 prints 8x10",
-        "2 photo albums",
-        "Summary video",
-        "Delivery in 1 week"
-      ]
+        "Prior consultation",
+        "Personalized session according to business type",
+        "Delivery in format optimized for web/social media",
+        "Professional digital gallery"
+      ],
+      types: [
+        "Personal branding (lifestyle portrait session)",
+        "Product photography", 
+        "Spaces (Airbnb, cafes, stores)",
+        "Visual content for Instagram"
+      ],
+      highlight: "Your brand also communicates through images. Let's make it memorable"
     }
   ];
   contactForPackage(packageName: string): void {  

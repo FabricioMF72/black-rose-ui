@@ -1,85 +1,198 @@
-<section class="grid grid-cols-1 md:grid-cols-2 md:grid-rows-[auto,auto] gap-4 min-h-screen py-20 bg-contact text-center font-serif">
-  <h1 class="col-span-1 md:col-span-2 text-6xl">Contact me</h1>
-  <div class="row-span-1 md:row-span-4 col-start-1 row-start-2 max-w-2xl w lg:w-1/2 sm:mt-6 lg:mt-6 px-4 lg:ml-auto">
-    <h2 class="mt-6 text-4xl text-left">Ready to book your session or have questions? Send me a message! I’d love to work with you and create photos that truly tell your story.</h2> 
-    <ul class="p-4">
-      <li class="flex items-center justify-content-start space-x-2 mt-6">
-        <i class="fa-regular fa-calendar-days text-2xl"></i>
-        <p>Book your date in advance</p>
-      </li>
-      <li class="flex items-center justify-content-start space-x-2 mt-6">
-        <i class="fa-solid fa-envelope text-2xl"></i>
-        <p>Send me a message for a personalized quote</p>
-      </li>
-      <li class="flex items-center justify-content-start space-x-2 mt-6">
-        <i class="fa-solid fa-location-dot text-2xl"></i>
-        <p>Location: Uvita & Pérez Zeledón, Costa Rica</p>
-      </li>
-    </ul>
-    <ul>
-      <li class="flex items-center gap-16 mt-6">
-        <div class="cursor-pointer hover:opacity-70 transition-opacity" (click)="openInstagram()">
-          <i class="fab fa-instagram text-2xl"></i>
-          <p>Instagram</p>
-        </div>
-        <div class="cursor-pointer hover:opacity-70 transition-opacity" (click)="openWhatsApp()">
-          <i class="fab fa-whatsapp text-2xl"></i>
-          <p>WhatsApp</p>
-        </div>
-      </li>
-    </ul>
+<section class="min-h-screen py-20 bg-contact font-serif">
+  <!-- Header Section -->
+  <div class="text-center mb-16">
+    <div class="max-w-4xl mx-auto px-4">
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 mb-6 leading-tight">
+        Let's Create Something <span class="italic text-amber-600 relative">
+          Beautiful
+          <svg class="absolute -bottom-2 left-0 w-full h-3 text-amber-200" viewBox="0 0 100 12" preserveAspectRatio="none">
+            <path d="M0,6 Q25,1 50,6 T100,6" stroke="currentColor" stroke-width="2" fill="none"/>
+          </svg>
+        </span>
+      </h1>
+      <div class="w-24 h-1 bg-amber-600 mx-auto mb-6 rounded-full"></div>
+      <p class="text-lg md:text-xl text-gray-600 leading-relaxed max-w-2xl mx-auto">
+        Ready to capture your special moments? I'd love to hear your story and bring your vision to life through the art of photography.
+      </p>
+      <div class="mt-8 flex items-center justify-center space-x-2 text-amber-600">
+        <i class="fas fa-camera text-2xl"></i>
+        <span class="text-sm font-medium tracking-wide">PROFESSIONAL PHOTOGRAPHY</span>
+        <i class="fas fa-camera text-2xl"></i>
+      </div>
+    </div>
   </div>
-  <div class="row-span-1 md:row-span-4 col-start-1 md:col-start-2 row-start-3 md:row-start-2 max-w-2xl w lg:w-1/2 sm:mt-6 lg:mt-8 px-4">
-    <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="space-y-6">
-      <div class="grid grid-cols-1 gap-4">
-        <div>
-          <label for="firstname" class="block font-medium text-gray-700">First name</label>
-          <input id="firstname" formControlName="firstname" type="text" class="mt-1 w-full rounded-lg border-gray-300 shadow-sm">
-          <div *ngIf="contactForm.get('firstname')?.invalid && contactForm.get('firstname')?.touched" class="text-red-600">
-            First name is required.
+
+  <!-- Main Content Grid -->
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-7xl mx-auto px-4">
+    <!-- Left Column - Get in Touch -->
+    <div class="order-1 flex">
+      <div class="bg-white rounded-3xl shadow-xl p-8 md:p-10 w-full flex flex-col min-h-[600px]">
+        <div class="flex-1">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-8">Get in Touch</h2>
+          
+          <div class="space-y-10">
+            <!-- Contact Info Items with improved design -->
+            <div class="flex items-start space-x-4">
+              <div class="bg-amber-100 rounded-full p-3 flex-shrink-0">
+                <i class="fa-regular fa-calendar-days text-amber-600 text-xl"></i>
+              </div>
+              <div>
+                <h3 class="font-semibold text-gray-800 mb-2">Book in Advance</h3>
+                <p class="text-gray-600">Secure your preferred date and time for the perfect session</p>
+              </div>
+            </div>
+
+            <div class="flex items-start space-x-4">
+              <div class="bg-amber-100 rounded-full p-3 flex-shrink-0">
+                <i class="fa-solid fa-envelope text-amber-600 text-xl"></i>
+              </div>
+              <div>
+                <h3 class="font-semibold text-gray-800 mb-2">Personalized Quote</h3>
+                <p class="text-gray-600">Tell me about your vision and I'll create a custom package for you</p>
+              </div>
+            </div>
+
+            <div class="flex items-start space-x-4">
+              <div class="bg-amber-100 rounded-full p-3 flex-shrink-0">
+                <i class="fa-solid fa-location-dot text-amber-600 text-xl"></i>
+              </div>
+              <div>
+                <h3 class="font-semibold text-gray-800 mb-2">Service Area</h3>
+                <p class="text-gray-600">Uvita & Pérez Zeledón, Costa Rica</p>
+              </div>
+            </div>
+
+            <div class="flex items-start space-x-4">
+              <div class="bg-amber-100 rounded-full p-3 flex-shrink-0">
+                <i class="fa-solid fa-clock text-amber-600 text-xl"></i>
+              </div>
+              <div>
+                <h3 class="font-semibold text-gray-800 mb-2">Quick Response</h3>
+                <p class="text-gray-600">I'll get back to you within 24 hours to discuss your session</p>
+              </div>
+            </div>
           </div>
         </div>
-        <div>
-          <label for="lastname" class="block font-medium text-gray-700">Last name</label>
-          <input id="lastname" formControlName="lastname" type="text" class="mt-1 w-full rounded-lg border-gray-300 shadow-sm">
-          <div *ngIf="contactForm.get('lastname')?.invalid && contactForm.get('lastname')?.touched" class="text-red-600">
-            Last name is required.
+
+        <!-- Social Media with improved buttons -->
+        <div class="pt-8 border-t border-gray-200 mt-8">
+          <div class="text-center mb-6">
+            <h3 class="font-semibold text-gray-800 mb-2">Connect with me</h3>
+            <div class="w-16 h-0.5 bg-amber-600 mx-auto rounded-full"></div>
           </div>
-        </div>
-        <div>
-          <label for="email" class="block font-medium text-gray-700">Email</label>
-          <input id="email" formControlName="email" type="email" class="mt-1 w-full rounded-lg border-gray-300 shadow-sm">
-          <div *ngIf="contactForm.get('email')?.invalid && contactForm.get('email')?.touched" class="text-red-600">
-            <div *ngIf="contactForm.get('email')?.errors?.['required']">Email is required.</div>
-            <div *ngIf="contactForm.get('email')?.errors?.['email']">Invalid email address.</div>
+          <div class="flex flex-col sm:flex-row gap-4">
+            <button (click)="openInstagram()" 
+              class="group flex items-center justify-center space-x-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white px-8 py-4 rounded-2xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 hover:scale-105 flex-1 relative overflow-hidden">
+              <div class="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <i class="fab fa-instagram text-xl relative z-10"></i>
+              <span class="font-semibold relative z-10">Follow on Instagram</span>
+              <i class="fas fa-external-link-alt text-sm opacity-70 relative z-10"></i>
+            </button>
+            
+            <button (click)="openWhatsApp()" 
+              class="group flex items-center justify-center space-x-3 bg-gradient-to-r from-green-500 to-green-600 text-white px-8 py-4 rounded-2xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 hover:scale-105 flex-1 relative overflow-hidden">
+              <div class="absolute inset-0 bg-gradient-to-r from-green-600 to-green-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <i class="fab fa-whatsapp text-xl relative z-10"></i>
+              <span class="font-semibold relative z-10">Chat on WhatsApp</span>
+              <i class="fas fa-comment-dots text-sm opacity-70 relative z-10"></i>
+            </button>
           </div>
-        </div>
-        <div>
-          <label for="date" class="block font-medium text-gray-700">What date are you looking to book?</label>
-          <input id="date" formControlName="date" type="date" class="mt-1 w-full rounded-lg border-gray-300 shadow-sm">
-          <div *ngIf="contactForm.get('date')?.invalid && contactForm.get('date')?.touched" class="text-red-600">
-            Date is required.
+          <div class="mt-6 text-center">
+            <p class="text-xs text-gray-500 font-medium tracking-wide">
+              <i class="fas fa-heart text-amber-500 mx-1"></i>
+              Let's create memories together
+              <i class="fas fa-heart text-amber-500 mx-1"></i>
+            </p>
           </div>
-        </div>
-        <div>
-          <label for="service" class="block font-medium text-gray-700">What type of session are you looking for?</label>
-          <select id="service" formControlName="service" class="mt-1 text-center w-full rounded-lg border-gray-300 shadow-sm outline-none" aria-labelledby="service">
-            <option>Wedding</option>
-            <option>Outdoor</option>
-            <option>Personal</option>
-          </select>
-          <div *ngIf="contactForm.get('service')?.invalid && contactForm.get('service')?.touched" class="text-red-600">
-            Service type is required.
-          </div>
-        </div>
-        <div>
-          <label for="message" class="block font-medium text-gray-700">Message</label>
-          <textarea id="message" formControlName="message" rows="4" class="mt-1 w-full rounded-lg border-gray-300 shadow-sm"></textarea>
-        </div>
-        <div>
-          <button type="submit" class="w-full py-3 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition">Send</button>
         </div>
       </div>
-    </form>
+    </div>
+
+    <!-- Right Column - Send me a Message -->
+    <div class="order-2 flex">
+      <div class="bg-white rounded-3xl shadow-xl p-8 md:p-10 w-full min-h-[600px]">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-8">Send me a Message</h2>
+      
+      <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="space-y-6">
+        <div class="grid md:grid-cols-2 gap-6">
+          <div>
+            <label for="firstname" class="block text-sm font-semibold text-gray-700 mb-2">First Name</label>
+            <input id="firstname" formControlName="firstname" type="text" 
+              class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all duration-300 bg-gray-50 focus:bg-white">
+            <div *ngIf="contactForm.get('firstname')?.invalid && contactForm.get('firstname')?.touched" 
+              class="text-red-500 text-sm mt-1 flex items-center">
+              <i class="fas fa-exclamation-circle mr-1"></i>
+              First name is required
+            </div>
+          </div>
+          <div>
+            <label for="lastname" class="block text-sm font-semibold text-gray-700 mb-2">Last Name</label>
+            <input id="lastname" formControlName="lastname" type="text" 
+              class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all duration-300 bg-gray-50 focus:bg-white">
+            <div *ngIf="contactForm.get('lastname')?.invalid && contactForm.get('lastname')?.touched" 
+              class="text-red-500 text-sm mt-1 flex items-center">
+              <i class="fas fa-exclamation-circle mr-1"></i>
+              Last name is required
+            </div>
+          </div>
+        </div>
+        
+        <div>
+          <label for="email" class="block text-sm font-semibold text-gray-700 mb-2">Email</label>
+          <input id="email" formControlName="email" type="email" 
+            class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all duration-300 bg-gray-50 focus:bg-white">
+          <div *ngIf="contactForm.get('email')?.invalid && contactForm.get('email')?.touched" 
+            class="text-red-500 text-sm mt-1 flex items-center">
+            <i class="fas fa-exclamation-circle mr-1"></i>
+            <div *ngIf="contactForm.get('email')?.errors?.['required']">Email is required</div>
+            <div *ngIf="contactForm.get('email')?.errors?.['email']">Invalid email address</div>
+          </div>
+        </div>
+        
+        <div>
+          <label for="date" class="block text-sm font-semibold text-gray-700 mb-2">What date are you looking to book?</label>
+          <input id="date" formControlName="date" type="date" 
+            class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all duration-300 bg-gray-50 focus:bg-white">
+          <div *ngIf="contactForm.get('date')?.invalid && contactForm.get('date')?.touched" 
+            class="text-red-500 text-sm mt-1 flex items-center">
+            <i class="fas fa-exclamation-circle mr-1"></i>
+            Date is required
+          </div>
+        </div>
+        
+        <div>
+          <label for="service" class="block text-sm font-semibold text-gray-700 mb-2">What type of session are you looking for?</label>
+          <select id="service" formControlName="service" 
+            class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all duration-300 bg-gray-50 focus:bg-white appearance-none" 
+            aria-labelledby="service">
+            <option value="">Select a service...</option>
+            <option>Events</option>
+            <option>Outdoor</option>
+            <option>Business</option>
+          </select>
+          <div *ngIf="contactForm.get('service')?.invalid && contactForm.get('service')?.touched" 
+            class="text-red-500 text-sm mt-1 flex items-center">
+            <i class="fas fa-exclamation-circle mr-1"></i>
+            Service type is required
+          </div>
+        </div>
+        
+        <div>
+          <label for="message" class="block text-sm font-semibold text-gray-700 mb-2">Message</label>
+          <textarea id="message" formControlName="message" rows="4" 
+            class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all duration-300 bg-gray-50 focus:bg-white resize-vertical" 
+            placeholder="Tell us about your vision..."></textarea>
+        </div>
+        
+        <div class="pt-4">
+          <button type="submit" 
+            class="w-full py-4 bg-gradient-to-r from-amber-600 to-amber-700 text-white font-semibold rounded-xl hover:from-amber-700 hover:to-amber-800 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center gap-2">
+            <i class="fas fa-paper-plane"></i>
+            Send Message
+          </button>
+        </div>
+      </form>
+      </div>
+    </div>
   </div>
 </section>

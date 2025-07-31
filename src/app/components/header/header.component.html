@@ -1,10 +1,38 @@
-<nav
-    class="sticky top-0 left-0 bg-header w-full flex justify-between items-center sm:flex-row lg:flex-row md:flex-row p-6 z-10">
-    <a [routerLink]="['/contact']" class="text-bluegray-900 lg:text-2xl sm:text-1xl flex-1 text-left">Contact</a>
-    <a [routerLink]="['/']" class="text-bluegray-900 lg:text-2xl sm:text-2xl flex-1 text-center">Kendra
-      Sáenz</a>
-    <div class="flex-1 text-right">
-      <a [routerLink]="['/blog']" class="lg:text-2xl sm:text-1xl mr-4 font-light sm:text-1xl hover:underline">Blog</a>
-      <a [routerLink]="['/pricing']" class="lg:text-2xl sm:text-1xl font-light hover:underline">Services</a>
-    </div>
+<nav class="sticky top-0 left-0 bg-header w-full flex justify-between items-center p-6 z-10 border-b border-amber-100 shadow-sm backdrop-blur-sm">
+  <div class="flex-1 text-left">
+    <a [routerLink]="['/contact']" class="group text-bluegray-900 lg:text-xl sm:text-lg font-medium hover:text-amber-600 transition-all duration-300 flex items-center space-x-2">
+      <i class="fas fa-envelope text-amber-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></i>
+      <span class="relative">
+        Contact
+        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-amber-600 group-hover:w-full transition-all duration-300"></span>
+      </span>
+    </a>
+  </div>
+  
+  <div class="flex-1 text-center">
+    <a [routerLink]="['/']" class="group text-bluegray-900 lg:text-3xl sm:text-2xl font-bold font-serif hover:text-amber-600 transition-all duration-300 relative">
+      <span class="relative z-10">Kendra Sáenz</span>
+      <div class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-amber-600 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+      <div class="absolute -top-1 -right-2 text-amber-500 text-xs opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-1 group-hover:translate-y-0">
+        <i class="fas fa-camera"></i>
+      </div>
+    </a>
+  </div>
+  
+  <div class="flex-1 text-right flex justify-end items-center space-x-6">
+    <a [routerLink]="['/blog']" class="group lg:text-xl sm:text-lg font-medium text-bluegray-900 hover:text-amber-600 transition-all duration-300 flex items-center space-x-1">
+      <i class="fas fa-blog text-amber-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></i>
+      <span class="relative">
+        Blog
+        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-amber-600 group-hover:w-full transition-all duration-300"></span>
+      </span>
+    </a>
+    <a [routerLink]="['/pricing']" class="group lg:text-xl sm:text-lg font-medium text-bluegray-900 hover:text-amber-600 transition-all duration-300 flex items-center space-x-1">
+      <i class="fas fa-tags text-amber-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></i>
+      <span class="relative">
+        Services
+        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-amber-600 group-hover:w-full transition-all duration-300"></span>
+      </span>
+    </a>
+  </div>
 </nav>
