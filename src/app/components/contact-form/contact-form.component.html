@@ -3,18 +3,18 @@
   <div class="text-center mb-16">
     <div class="max-w-4xl mx-auto px-4">
       <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 mb-6 leading-tight">
-        Let's Create Something <span class="italic text-amber-600 relative">
+        Let's Create Something <span class="italic text-green-700 relative">
           Beautiful
-          <svg class="absolute -bottom-2 left-0 w-full h-3 text-amber-200" viewBox="0 0 100 12" preserveAspectRatio="none">
+          <svg class="absolute -bottom-2 left-0 w-full h-3 text-green-200" viewBox="0 0 100 12" preserveAspectRatio="none">
             <path d="M0,6 Q25,1 50,6 T100,6" stroke="currentColor" stroke-width="2" fill="none"/>
           </svg>
         </span>
       </h1>
-      <div class="w-24 h-1 bg-amber-600 mx-auto mb-6 rounded-full"></div>
+      <div class="w-24 h-1 bg-green-700 mx-auto mb-6 rounded-full"></div>
       <p class="text-lg md:text-xl text-gray-600 leading-relaxed max-w-2xl mx-auto">
         Ready to capture your special moments? I'd love to hear your story and bring your vision to life through the art of photography.
       </p>
-      <div class="mt-8 flex items-center justify-center space-x-2 text-amber-600">
+      <div class="mt-8 flex items-center justify-center space-x-2 text-green-700">
         <i class="fas fa-camera text-2xl"></i>
         <span class="text-sm font-medium tracking-wide">PROFESSIONAL PHOTOGRAPHY</span>
         <i class="fas fa-camera text-2xl"></i>
@@ -33,8 +33,8 @@
           <div class="space-y-10">
             <!-- Contact Info Items with improved design -->
             <div class="flex items-start space-x-4">
-              <div class="bg-amber-100 rounded-full p-3 flex-shrink-0">
-                <i class="fa-regular fa-calendar-days text-amber-600 text-xl"></i>
+              <div class="bg-green-100 rounded-full p-3 flex-shrink-0">
+                <i class="fa-regular fa-calendar-days text-green-700 text-xl"></i>
               </div>
               <div>
                 <h3 class="font-semibold text-gray-800 mb-2">Book in Advance</h3>
@@ -43,8 +43,8 @@
             </div>
 
             <div class="flex items-start space-x-4">
-              <div class="bg-amber-100 rounded-full p-3 flex-shrink-0">
-                <i class="fa-solid fa-envelope text-amber-600 text-xl"></i>
+              <div class="bg-green-100 rounded-full p-3 flex-shrink-0">
+                <i class="fa-solid fa-envelope text-green-700 text-xl"></i>
               </div>
               <div>
                 <h3 class="font-semibold text-gray-800 mb-2">Personalized Quote</h3>
@@ -53,8 +53,8 @@
             </div>
 
             <div class="flex items-start space-x-4">
-              <div class="bg-amber-100 rounded-full p-3 flex-shrink-0">
-                <i class="fa-solid fa-location-dot text-amber-600 text-xl"></i>
+              <div class="bg-green-100 rounded-full p-3 flex-shrink-0">
+                <i class="fa-solid fa-location-dot text-green-700 text-xl"></i>
               </div>
               <div>
                 <h3 class="font-semibold text-gray-800 mb-2">Service Area</h3>
@@ -63,8 +63,8 @@
             </div>
 
             <div class="flex items-start space-x-4">
-              <div class="bg-amber-100 rounded-full p-3 flex-shrink-0">
-                <i class="fa-solid fa-clock text-amber-600 text-xl"></i>
+              <div class="bg-green-100 rounded-full p-3 flex-shrink-0">
+                <i class="fa-solid fa-clock text-green-700 text-xl"></i>
               </div>
               <div>
                 <h3 class="font-semibold text-gray-800 mb-2">Quick Response</h3>
@@ -78,7 +78,7 @@
         <div class="pt-8 border-t border-gray-200 mt-8">
           <div class="text-center mb-6">
             <h3 class="font-semibold text-gray-800 mb-2">Connect with me</h3>
-            <div class="w-16 h-0.5 bg-amber-600 mx-auto rounded-full"></div>
+            <div class="w-16 h-0.5 bg-green-700 mx-auto rounded-full"></div>
           </div>
           <div class="flex flex-col sm:flex-row gap-4">
             <button (click)="openInstagram()" 
@@ -99,9 +99,9 @@
           </div>
           <div class="mt-6 text-center">
             <p class="text-xs text-gray-500 font-medium tracking-wide">
-              <i class="fas fa-heart text-amber-500 mx-1"></i>
+              <i class="fas fa-heart text-green-600 mx-1"></i>
               Let's create memories together
-              <i class="fas fa-heart text-amber-500 mx-1"></i>
+              <i class="fas fa-heart text-green-600 mx-1"></i>
             </p>
           </div>
         </div>
@@ -118,7 +118,7 @@
           <div>
             <label for="firstname" class="block text-sm font-semibold text-gray-700 mb-2">First Name</label>
             <input id="firstname" formControlName="firstname" type="text" 
-              class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all duration-300 bg-gray-50 focus:bg-white">
+              class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-300 bg-gray-50 focus:bg-white">
             <div *ngIf="contactForm.get('firstname')?.invalid && contactForm.get('firstname')?.touched" 
               class="text-red-500 text-sm mt-1 flex items-center">
               <i class="fas fa-exclamation-circle mr-1"></i>
@@ -128,7 +128,7 @@
           <div>
             <label for="lastname" class="block text-sm font-semibold text-gray-700 mb-2">Last Name</label>
             <input id="lastname" formControlName="lastname" type="text" 
-              class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all duration-300 bg-gray-50 focus:bg-white">
+              class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-300 bg-gray-50 focus:bg-white">
             <div *ngIf="contactForm.get('lastname')?.invalid && contactForm.get('lastname')?.touched" 
               class="text-red-500 text-sm mt-1 flex items-center">
               <i class="fas fa-exclamation-circle mr-1"></i>
@@ -140,7 +140,7 @@
         <div>
           <label for="email" class="block text-sm font-semibold text-gray-700 mb-2">Email</label>
           <input id="email" formControlName="email" type="email" 
-            class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all duration-300 bg-gray-50 focus:bg-white">
+            class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-300 bg-gray-50 focus:bg-white">
           <div *ngIf="contactForm.get('email')?.invalid && contactForm.get('email')?.touched" 
             class="text-red-500 text-sm mt-1 flex items-center">
             <i class="fas fa-exclamation-circle mr-1"></i>
@@ -152,7 +152,7 @@
         <div>
           <label for="date" class="block text-sm font-semibold text-gray-700 mb-2">What date are you looking to book?</label>
           <input id="date" formControlName="date" type="date" 
-            class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all duration-300 bg-gray-50 focus:bg-white">
+            class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-300 bg-gray-50 focus:bg-white">
           <div *ngIf="contactForm.get('date')?.invalid && contactForm.get('date')?.touched" 
             class="text-red-500 text-sm mt-1 flex items-center">
             <i class="fas fa-exclamation-circle mr-1"></i>
@@ -163,7 +163,7 @@
         <div>
           <label for="service" class="block text-sm font-semibold text-gray-700 mb-2">What type of session are you looking for?</label>
           <select id="service" formControlName="service" 
-            class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all duration-300 bg-gray-50 focus:bg-white appearance-none" 
+            class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-300 bg-gray-50 focus:bg-white appearance-none" 
             aria-labelledby="service">
             <option value="">Select a service...</option>
             <option>Events</option>
@@ -180,13 +180,13 @@
         <div>
           <label for="message" class="block text-sm font-semibold text-gray-700 mb-2">Message</label>
           <textarea id="message" formControlName="message" rows="4" 
-            class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all duration-300 bg-gray-50 focus:bg-white resize-vertical" 
+            class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-300 bg-gray-50 focus:bg-white resize-vertical" 
             placeholder="Tell us about your vision..."></textarea>
         </div>
         
         <div class="pt-4">
           <button type="submit" 
-            class="w-full py-4 bg-gradient-to-r from-amber-600 to-amber-700 text-white font-semibold rounded-xl hover:from-amber-700 hover:to-amber-800 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center gap-2">
+            class="w-full py-4 bg-gradient-to-r from-green-600 to-green-700 text-white font-semibold rounded-xl hover:from-green-700 hover:to-green-800 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center gap-2">
             <i class="fas fa-paper-plane"></i>
             Send Message
           </button>
