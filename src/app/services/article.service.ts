@@ -44,18 +44,18 @@ La tarde culminó con un atardecer espectacular, los colores del cielo, el mar y
 Cada momento fue un verdadero regalo, y me siento agradecida de haber sido parte de este día tan significativo en la vida de Bárbara y Daniel.
 */
         {
-            name: 'Boda de Bárbara y Daniel',
+            name: 'Barbara and Daniel Wedding',
             link: 'barbara-daniel-wedding',
-            title: 'Bárbara & Daniel: Una Boda de Ensueño en Playa Hermosa, Costa Rica',
-            mainParagraph: 'La historia de Bárbara y Daniel comenzó con un hermoso día en las montañas, donde nos reunimos en un encantador hotel rodeado de naturaleza. Desde el principio, los jardines del lugar nos regalaron el escenario perfecto para inmortalizar sus primeros momentos como pareja. Entre sonrisas y emociones, aprovechamos cada rincón del lugar para capturar la esencia de su amor en un entorno tan único como su historia.',
+            title: 'Bárbara & Daniel: A Dream Wedding in Playa Hermosa, Costa Rica',
+            mainParagraph: 'Bárbara and Daniel\'s story began with a beautiful day in the mountains, where we gathered at a charming hotel surrounded by nature. From the very beginning, the hotel gardens provided the perfect setting to capture their first moments as a couple. Between smiles and emotions, we took advantage of every corner of the place to capture the essence of their love in an environment as unique as their story.',
             paragraphs: [
                 {
-                    title: 'Un Encuentro Mágico en las Montañas 🌄💑',
-                    text: 'La celebración continuó con la ceremonia frente al mar en Uvita de Osa, Costa Rica, donde la brisa y el sonido de las olas crearon una atmósfera mágica. Gracias a Raven, quien guió con amor y dedicación la ceremonia, el momento se volvió aún más especial. El altar, adornado con flores frescas y elementos simbólicos para ellos, reflejaba la conexión profunda entre Bárbara y Daniel, haciendo de este instante algo realmente único.'
+                    title: 'A Magical Encounter in the Mountains 🌄💑',
+                    text: 'The celebration continued with the ceremony by the sea in Uvita de Osa, Costa Rica, where the breeze and the sound of the waves created a magical atmosphere. Thanks to Raven, who guided the ceremony with love and dedication, the moment became even more special. The altar, adorned with fresh flowers and symbolic elements for them, reflected the deep connection between Bárbara and Daniel, making this moment truly unique.'
                 },
                 {
-                    title: 'Un Atardecer Inolvidable 🌅❤️',
-                    text: 'La tarde culminó con un atardecer espectacular, los colores del cielo, el mar y la tierra se unieron para crear una serie de imágenes que reflejan el amor y la complicidad de esta maravillosa pareja.'
+                    title: 'An Unforgettable Sunset 🌅❤️',
+                    text: 'The afternoon culminated with a spectacular sunset, where the colors of the sky, sea, and earth came together to create a series of images that reflect the love and complicity of this wonderful couple.'
                 }
             ],
             location: 'Uvita, Costa Rica',
