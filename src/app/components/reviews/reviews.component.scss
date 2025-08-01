@@ -1,18 +1,111 @@
 // Reviews component styles
 .review-card {
-  transition: transform 0.3s ease;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(0);
 }
 
 .review-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-8px);
 }
 
 .star-rating {
   filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
 }
 
-@media (max-width: 768px) {
+/* Mejorar calidad de imagen */
+img {
+  /* Mejora el renderizado de imágenes */
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+  
+  /* Para imágenes de alta calidad */
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
+  backface-visibility: hidden;
+  
+  /* Suavizar bordes */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  
+  /* Optimizar performance */
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+/* Contenedor de imagen específico - TAMAÑOS MÁS GRANDES */
+.review-avatar {
+  /* Tamaños aumentados para mejor calidad */
+  min-width: 80px;
+  min-height: 80px;
+  
+  img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover;
+    object-position: center;
+    
+    /* Filtros más suaves para imágenes grandes */
+    filter: contrast(1.03) saturate(1.03) brightness(1.01);
+    -webkit-filter: contrast(1.03) saturate(1.03) brightness(1.01);
+  }
+}
+
+/* Responsive design mejorado */
+@media (min-width: 768px) {
+  .review-avatar {
+    min-width: 112px;
+    min-height: 112px;
+  }
+}
+
+@media (max-width: 767px) {
   .container {
     padding: 0 1rem;
   }
+  
+  .review-avatar {
+    min-width: 80px;
+    min-height: 80px;
+  }
+}
+
+/* Animación suave al cargar */
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.review-avatar img {
+  animation: fadeInScale 0.4s ease-out;
+}
+
+/* Layout alternado para crear ritmo visual */
+.review-card:nth-child(even) {
+  animation-delay: 0.1s;
+}
+
+/* Efectos de gradiente sutil */
+.review-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #94a3b8, #64748b, #94a3b8);
+  border-radius: 1rem 1rem 0 0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.review-card:hover::before {
+  opacity: 1;
 }

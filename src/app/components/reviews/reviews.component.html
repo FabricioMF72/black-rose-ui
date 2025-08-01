@@ -1,38 +1,75 @@
-<section class="py-20 bg-gray-50 font-serif">
+<section class="py-20 bg-gradient-to-br from-stone-50 to-gray-100 font-serif">
   <div class="container mx-auto px-4">
-    <h2 class="text-5xl font-serif text-center mb-16 text-gray-800">What My Clients Say</h2>
+    <!-- Header Section -->
+    <div class="text-center mb-16">
+      <h2 class="text-4xl md:text-5xl font-serif font-bold text-gray-900 mb-4">
+        What My <span class="text-slate-600">Clients Say</span>
+      </h2>
+      <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+        Real testimonials from beautiful souls who trusted me to capture their special moments
+      </p>
+      <div class="w-24 h-1 bg-slate-400 mx-auto mt-6"></div>
+    </div>
     
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
-      <div *ngFor="let review of reviews" class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow duration-300">
-        <div class="flex items-center mb-4">
-          <img 
-            [src]="review.photo" 
-            [alt]="review.name"
-            class="w-32 h-32 rounded-full object-cover mr-4"
-            onerror="this.src='https://via.placeholder.com/64x64/cccccc/666666?text=User'"
-          >
-          <div>
-            <h3 class="font-serif font-semibold text-xl text-gray-800">{{ review.name }}</h3>
-            <div class="flex items-center mb-1">
-              <div class="flex mr-2">
-                <i 
-                  *ngFor="let star of getStarsArray(review.rating)" 
-                  class="fas fa-star text-yellow-400 text-base"
-                  [class.text-gray-300]="star === 0"
-                ></i>
-              </div>
-              <span class="text-base text-gray-600 font-serif">({{ review.rating }}/5)</span>
+    <!-- Reviews Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-7xl mx-auto">
+      <div *ngFor="let review of reviews; let i = index" 
+           class="review-card bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden">
+        
+        <!-- Card Header with Avatar -->
+        <div class="p-6 md:p-8">
+          <div class="flex items-start space-x-6">
+            <!-- Large Avatar -->
+            <div class="review-avatar w-20 h-20 md:w-36 md:h-40 rounded-2xl overflow-hidden flex-shrink-0 bg-gray-100 shadow-md ring-4 ring-white">
+              <img 
+                [src]="review.photo" 
+                [alt]="review.name + ' review photo'"
+                class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+                onerror="this.src='https://via.placeholder.com/200x200/f3f4f6/9ca3af?text=' + encodeURIComponent(this.alt.charAt(0).toUpperCase())"
+              >
             </div>
-            <div class="flex items-center text-sm text-gray-500 font-serif">
-              <i [class]="review.platformIcon" class="mr-1"></i>
-              <span>{{ review.platform }}</span>
+            
+            <!-- Client Info -->
+            <div class="flex-1 min-w-0">
+              <h3 class="font-serif font-bold text-xl md:text-2xl text-gray-900 mb-2">{{ review.name }}</h3>
+              
+              <!-- Star Rating -->
+              <div class="flex items-center mb-3">
+                <div class="flex mr-3">
+                  <i 
+                    *ngFor="let star of getStarsArray(review.rating)" 
+                    class="fas fa-star text-amber-400 text-lg mr-1"
+                    [class.text-gray-300]="star === 0"
+                  ></i>
+                </div>
+                <span class="text-sm font-medium text-gray-600">({{ review.rating }}/5)</span>
+              </div>
+              
+              <!-- Platform Badge -->
+              <div class="inline-flex items-center px-3 py-1 rounded-full bg-green-100 text-green-700 text-sm font-medium">
+                <i [class]="review.platformIcon" class="mr-2 text-green-600"></i>
+                <span>{{ review.platform }}</span>
+              </div>
             </div>
           </div>
         </div>
         
-        <p class="text-gray-700 italic leading-relaxed font-serif text-base">
-          "{{ review.message }}"
-        </p>
+        <!-- Quote Section -->
+        <div class="px-6 md:px-8 pb-6 md:pb-8">
+          <div class="relative">
+            <!-- Quote Icon -->
+            <div class="absolute -top-2 -left-2 text-4xl text-slate-300 font-serif">"</div>
+            
+            <!-- Message -->
+            <p class="text-gray-700 italic leading-relaxed font-serif text-base md:text-lg pl-6 relative z-10">
+              {{ review.message }}
+            </p>
+            
+            <!-- Closing Quote -->
+            <div class="text-right text-4xl text-slate-300 font-serif -mt-4">"</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

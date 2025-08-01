@@ -12,37 +12,37 @@ export class ReviewsComponent {
   reviews = [
     {
       id: 1,
-      name: "Sarah Johnson",
+      name: "Carmen Diu",
       rating: 5,
-      message: "Absolutely amazing photographer! The photos from our wedding were beyond our expectations. Every moment was captured perfectly.",
-      photo: "familia-1.webp",
-      platform: "Google Maps",
-      platformIcon: "fab fa-google"
+      message: "They’re better than I expected. So fun and loving. Absolutely amazing. You’re so talented and you know how to capture the LOVE 🩷 wow. I’m crying this is so beautifu.",
+      photo: "Carmen-Kevin-wedding (1).webp",
+      platform: "WhatsApp",
+      platformIcon: "fab fa-whatsapp"
     },
     {
       id: 2,
-      name: "Michael Chen",
+      name: "Barbara Seller",
       rating: 5,
-      message: "Professional, creative, and so easy to work with. Our family photos turned out beautiful. Highly recommend!",
-      photo: "ken-about.jpg",
-      platform: "Instagram",
-      platformIcon: "fab fa-instagram"
+      message: "We are extremely happy with the results. It was an absolute pleasure to meet and work with you!!!",
+      photo: "familia-1.jpg",
+      platform: "WhatsApp",
+      platformIcon: "fab fa-whatsapp"
     },
     {
       id: 3,
-      name: "Emma Rodriguez",
+      name: "Tania Ramírez",
       rating: 5,
-      message: "The outdoor session was incredible! The photographer knew all the best spots and made us feel so comfortable.",
-      photo: "outdoor-1.webp",
-      platform: "Facebook",
-      platformIcon: "fab fa-facebook"
+      message: "Thank you!! They’re awesome! 💙",
+      photo: "review3.jpg",
+      platform: "WhatsApp",
+      platformIcon: "fab fa-whatsapp"
     },
     {
       id: 4,
-      name: "David Thompson",
-      rating: 4,
-      message: "Great experience overall. The photos were delivered on time and the quality was excellent. Will definitely book again.",
-      photo: "outdoor-3.jpg",
+      name: "Okalin Valverde",
+      rating: 5,
+      message: "Muchas gracias por todo tu me ayudaste un montón, no tengo cómo agradecértelo.",
+      photo: "review4.jpg",
       platform: "WhatsApp",
       platformIcon: "fab fa-whatsapp"
     }
