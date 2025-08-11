@@ -1,5 +1,5 @@
-import { CommonModule } from '@angular/common';
-import { Component, signal } from '@angular/core';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
+import { Component, signal, HostListener } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ArticleService } from '../../services/article.service';
 import { SeoService } from '../../services/seo.service';
@@ -9,7 +9,7 @@ import { ContactFormComponent } from "../../components/contact-form/contact-form
 @Component({
   selector: 'app-article',
   standalone: true,
-  imports: [CommonModule, ContactFormComponent],
+  imports: [CommonModule, ContactFormComponent, NgOptimizedImage],
   templateUrl: './article.component.html',
   styleUrl: './article.component.scss'
 })
@@ -17,6 +17,12 @@ export class ArticleComponent {
   article = signal<Article | undefined>(undefined);
   visibleImages: string[] = [];
   currentIndex: number = 0;
+  
+  // Image viewer properties
+  showImageViewer = false;
+  selectedImage = '';
+  selectedImageIndex = 0;
+  allImages: string[] = [];
 
   constructor(
     private route: ActivatedRoute, 
@@ -32,6 +38,7 @@ export class ArticleComponent {
       this.updateVisibleImages();
       
       if (article) {
+        this.allImages = article.images; // Initialize all images for viewer
         this.updateSEO(article);
       }
     });
@@ -99,6 +106,56 @@ export class ArticleComponent {
     if (this.currentIndex - 3 >= 0) {
       this.currentIndex -= 3;
       this.updateVisibleImages();
+    }
+  }
+
+  // Image viewer methods
+  openImageViewer(image: string): void {
+    this.selectedImage = image;
+    this.selectedImageIndex = this.allImages.indexOf(image);
+    this.showImageViewer = true;
+    this.preloadImage(image);
+  }
+
+  closeImageViewer(): void {
+    this.showImageViewer = false;
+  }
+
+  nextImageInViewer(): void {
+    if (this.selectedImageIndex < this.allImages.length - 1) {
+      this.selectedImageIndex++;
+      this.selectedImage = this.allImages[this.selectedImageIndex];
+      this.preloadImage(this.selectedImage);
+    }
+  }
+
+  previousImageInViewer(): void {
+    if (this.selectedImageIndex > 0) {
+      this.selectedImageIndex--;
+      this.selectedImage = this.allImages[this.selectedImageIndex];
+      this.preloadImage(this.selectedImage);
+    }
+  }
+
+  private preloadImage(src: string): void {
+    const img = new Image();
+    img.src = src;
+  }
+
+  @HostListener('document:keydown', ['$event'])
+  handleKeyDown(event: KeyboardEvent): void {
+    if (!this.showImageViewer) return;
+    
+    switch (event.key) {
+      case 'Escape':
+        this.closeImageViewer();
+        break;
+      case 'ArrowLeft':
+        this.previousImageInViewer();
+        break;
+      case 'ArrowRight':
+        this.nextImageInViewer();
+        break;
     }
   }
 }

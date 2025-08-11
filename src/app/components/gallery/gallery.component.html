@@ -34,52 +34,66 @@
       </div>
     </div>
     <!-- Image Gallery -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-      <div *ngFor="let image of categorySelected!.imageList; let i = index" 
-           class="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 bg-white">
-        
-        <!-- Image Container -->
-        <div class="relative overflow-hidden">
-          <img [src]="image" 
-               loading="lazy" 
-               [alt]="categorySelected!.category + ' photo ' + (i + 1)" 
-               class="w-full h-80 object-cover transition-transform duration-700 group-hover:scale-110">
+    @defer (on viewport) {
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div *ngFor="let image of categorySelected!.imageList; let i = index" 
+             class="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 bg-white cursor-pointer"
+             (click)="openImageViewer(image, i)">
           
-          <!-- Gradient Overlay -->
-          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-          
-          <!-- Content Overlay -->
-          <div class="absolute inset-0 flex flex-col justify-end p-6 transform translate-y-6 group-hover:translate-y-0 transition-transform duration-500">
-            <div class="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
-              <h4 class="text-lg font-semibold mb-2">{{categorySelected!.category}}</h4>
-              <p class="text-sm text-gray-200">Professional Photography</p>
-              <div class="flex items-center mt-3 space-x-2">
-                <i class="fas fa-expand-alt text-green-500"></i>
-                <span class="text-xs text-gray-300">Click to view</span>
+          <!-- Image Container -->
+          <div class="relative overflow-hidden">
+            <img [ngSrc]="getImagePath(image)" 
+                 [sizes]="'(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw'"
+                 width="400"
+                 height="320"
+                 [alt]="categorySelected!.category + ' photo ' + (i + 1)" 
+                 class="w-full h-80 object-cover transition-transform duration-700 group-hover:scale-110"
+                 priority="false">
+            
+            <!-- Gradient Overlay -->
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            
+            <!-- Content Overlay -->
+            <div class="absolute inset-0 flex flex-col justify-end p-6 transform translate-y-6 group-hover:translate-y-0 transition-transform duration-500">
+              <div class="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                <h4 class="text-lg font-semibold mb-2">{{categorySelected!.category}}</h4>
+                <p class="text-sm text-gray-200">Professional Photography</p>
+                <div class="flex items-center mt-3 space-x-2">
+                  <i class="fas fa-expand-alt text-green-500"></i>
+                  <span class="text-xs text-gray-300">Click to view</span>
+                </div>
               </div>
             </div>
+            
+            <!-- Corner Badge -->
+            <div class="absolute top-4 right-4 bg-green-700 text-white px-3 py-1 rounded-full text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200">
+              {{i + 1}} / {{categorySelected!.imageList.length}}
+            </div>
           </div>
           
-          <!-- Corner Badge -->
-          <div class="absolute top-4 right-4 bg-green-700 text-white px-3 py-1 rounded-full text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200">
-            {{i + 1}} / {{categorySelected!.imageList.length}}
-          </div>
-        </div>
-        
-        <!-- Bottom Card Section -->
-        <div class="p-4 bg-white">
-          <div class="flex items-center justify-between">
-            <div class="flex items-center space-x-2">
-              <div class="w-2 h-2 bg-green-700 rounded-full"></div>
-              <span class="text-sm text-gray-600 font-medium">{{categorySelected!.category}}</span>
+          <!-- Bottom Card Section -->
+          <div class="p-4 bg-white">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center space-x-2">
+                <div class="w-2 h-2 bg-green-700 rounded-full"></div>
+                <span class="text-sm text-gray-600 font-medium">{{categorySelected!.category}}</span>
+              </div>
+              <button class="text-green-700 hover:text-green-800 transition-colors duration-200">
+                <i class="fas fa-heart text-sm"></i>
+              </button>
             </div>
-            <button class="text-green-700 hover:text-green-800 transition-colors duration-200">
-              <i class="fas fa-heart text-sm"></i>
-            </button>
           </div>
         </div>
       </div>
-    </div>
+    } @placeholder {
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        @for (item of [1,2,3,4,5,6]; track $index) {
+          <div class="animate-pulse bg-gray-200 rounded-2xl h-96 flex items-center justify-center">
+            <i class="fas fa-camera text-gray-400 text-4xl"></i>
+          </div>
+        }
+      </div>
+    }
     
     <!-- Load More Section (if needed) -->
     <div class="text-center mt-16">
@@ -89,4 +103,43 @@
       </div>
     </div>
   </div>
+
+  <!-- Image Viewer Modal -->
+  @if (showImageViewer) {
+    <div class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-90"
+         (click)="closeImageViewer()">
+      
+      <!-- Modal Content -->
+      <div class="relative max-w-7xl max-h-full p-4" (click)="$event.stopPropagation()">
+        
+        <!-- Close Button -->
+        <button class="absolute top-4 right-4 z-10 bg-black bg-opacity-50 text-white rounded-full p-2 hover:bg-opacity-70 transition-all"
+                (click)="closeImageViewer()">
+          <i class="fas fa-times text-xl"></i>
+        </button>
+        
+        <!-- Navigation Buttons -->
+        @if (selectedImageIndex > 0) {
+          <button class="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 bg-black bg-opacity-50 text-white rounded-full p-3 hover:bg-opacity-70 transition-all"
+                  (click)="previousImage()">
+            <i class="fas fa-chevron-left text-xl"></i>
+          </button>
+        }
+        
+        @if (selectedImageIndex < categorySelected!.imageList.length - 1) {
+          <button class="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 bg-black bg-opacity-50 text-white rounded-full p-3 hover:bg-opacity-70 transition-all"
+                  (click)="nextImage()">
+            <i class="fas fa-chevron-right text-xl"></i>
+          </button>
+        }
+        
+        <!-- Image -->
+        <div class="flex items-center justify-center">
+          <img [src]="selectedImage" 
+               [alt]="categorySelected!.category + ' photo ' + (selectedImageIndex + 1)"
+               class="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl">
+        </div>
+      </div>
+    </div>
+  }
 </section>

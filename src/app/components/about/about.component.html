@@ -27,9 +27,12 @@
           
           <!-- Main image -->
           <div class="relative bg-white p-4 rounded-3xl shadow-2xl group-hover:shadow-3xl transition-shadow duration-500">
-            <img src="ken-about-2.jpg" 
-                 loading="lazy" 
+            <img ngSrc="ken-about-2.jpg" 
+                 sizes="(max-width: 768px) 100vw, 50vw"
+                 width="600"
+                 height="700"
                  alt="Kendra Saenz - Professional Photographer" 
+                 priority="false"
                  class="w-full rounded-2xl object-cover shadow-lg group-hover:scale-105 transition-transform duration-700">
             
             <!-- Image overlay badge -->

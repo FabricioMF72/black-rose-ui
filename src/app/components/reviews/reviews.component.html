@@ -22,10 +22,13 @@
             <!-- Large Avatar -->
             <div class="review-avatar w-20 h-20 md:w-36 md:h-40 rounded-2xl overflow-hidden flex-shrink-0 bg-gray-100 shadow-md ring-4 ring-white">
               <img 
-                [src]="review.photo" 
+                [ngSrc]="review.photo" 
+                sizes="(max-width: 768px) 20vw, 15vw"
+                width="144"
+                height="160"
                 [alt]="review.name + ' review photo'"
                 class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500"
-                loading="lazy"
+                priority="false"
                 onerror="this.src='https://via.placeholder.com/200x200/f3f4f6/9ca3af?text=' + encodeURIComponent(this.alt.charAt(0).toUpperCase())"
               >
             </div>

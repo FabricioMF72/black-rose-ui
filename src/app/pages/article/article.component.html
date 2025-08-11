@@ -1,9 +1,12 @@
 <div class="min-h-screen bg-gray-50">
   <!-- Hero Section with Image -->
   <section class="relative w-full h-screen overflow-hidden">
-    <img [src]="article()!.images[0]" 
-         loading="lazy" 
+    <img [ngSrc]="article()!.images[0]" 
+         sizes="100vw"
+         width="1920"
+         height="1080"
          alt="{{article()!.title}}" 
+         priority="true"
          class="w-full h-full object-cover">
     <div class="absolute inset-0 bg-black/40"></div>
     
@@ -93,19 +96,33 @@
         </button>
 
         <!-- Images Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-16">
-          <div *ngFor="let photo of visibleImages" 
-               class="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300">
-            <img [src]="photo" 
-                 loading="lazy" 
-                 alt="Wedding photography" 
-                 class="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-500">
-            <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all duration-300"></div>
-            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <i class="fas fa-expand text-white text-2xl"></i>
+        @defer (on viewport) {
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-16">
+            <div *ngFor="let photo of visibleImages" 
+                 class="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer"
+                 (click)="openImageViewer(photo)">
+              <img [ngSrc]="photo" 
+                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                   width="400"
+                   height="320"
+                   alt="Wedding photography" 
+                   priority="false"
+                   class="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-500">
+              <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all duration-300"></div>
+              <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <i class="fas fa-expand text-white text-2xl"></i>
+              </div>
             </div>
           </div>
-        </div>
+        } @placeholder {
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-16">
+            @for (item of [1,2,3,4,5,6]; track $index) {
+              <div class="animate-pulse bg-gray-200 rounded-xl h-80 flex items-center justify-center">
+                <i class="fas fa-camera text-gray-400 text-2xl"></i>
+              </div>
+            }
+          </div>
+        }
       </div>
     </div>
   </section>
@@ -127,4 +144,43 @@
       </a>
     </div>
   </section>
+
+  <!-- Image Viewer Modal -->
+  @if (showImageViewer) {
+    <div class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-95"
+         (click)="closeImageViewer()">
+      
+      <!-- Modal Content -->
+      <div class="relative max-w-7xl max-h-full p-4" (click)="$event.stopPropagation()">
+        
+        <!-- Close Button -->
+        <button class="absolute top-4 right-4 z-10 bg-black bg-opacity-60 text-white rounded-full p-3 hover:bg-opacity-80 transition-all"
+                (click)="closeImageViewer()">
+          <i class="fas fa-times text-xl"></i>
+        </button>
+        
+        <!-- Navigation Buttons -->
+        @if (selectedImageIndex > 0) {
+          <button class="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 bg-black bg-opacity-60 text-white rounded-full p-4 hover:bg-opacity-80 transition-all"
+                  (click)="previousImageInViewer()">
+            <i class="fas fa-chevron-left text-xl"></i>
+          </button>
+        }
+        
+        @if (selectedImageIndex < allImages.length - 1) {
+          <button class="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 bg-black bg-opacity-60 text-white rounded-full p-4 hover:bg-opacity-80 transition-all"
+                  (click)="nextImageInViewer()">
+            <i class="fas fa-chevron-right text-xl"></i>
+          </button>
+        }
+        
+        <!-- Image -->
+        <div class="flex items-center justify-center">
+          <img [src]="selectedImage" 
+               [alt]="article()!.title + ' - Photo ' + (selectedImageIndex + 1)"
+               class="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl">
+        </div>
+      </div>
+    </div>
+  }
 </div>

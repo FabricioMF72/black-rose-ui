@@ -1,10 +1,10 @@
-import { TitleCasePipe } from '@angular/common';
+import { TitleCasePipe, NgOptimizedImage } from '@angular/common';
 import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-hero',
   standalone: true,
-  imports: [TitleCasePipe],
+  imports: [TitleCasePipe, NgOptimizedImage],
   templateUrl: './hero.component.html',
   styleUrl: './hero.component.scss'
 })
