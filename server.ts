@@ -74,9 +74,44 @@ export function app(): express.Express {
     index: 'index.html',
   }));
 
-  // All regular routes use the Angular engine
+  // Middleware para detectar rutas no válidas y responder con 404
   server.get('**', (req, res, next) => {
     const { protocol, originalUrl, baseUrl, headers } = req;
+    
+    // Lista de rutas válidas (incluyendo rutas dinámicas)
+    const validRoutes = [
+      '/',
+      '/home',
+      '/index',
+      '/index.html',
+      '/pricing',
+      '/blog',
+      '/contact',
+      '/article', // Para rutas dinámicas como /article/algo
+    ];
+    
+    // Verificar si la ruta es válida o es un archivo estático
+    const isValidRoute = validRoutes.some(route => {
+      if (route === '/article') {
+        return originalUrl.startsWith('/article/');
+      }
+      return originalUrl === route || originalUrl.startsWith(route + '/');
+    });
+    
+    const isStaticFile = originalUrl.includes('.') && 
+                        (originalUrl.includes('.js') || 
+                         originalUrl.includes('.css') || 
+                         originalUrl.includes('.ico') || 
+                         originalUrl.includes('.png') || 
+                         originalUrl.includes('.jpg') || 
+                         originalUrl.includes('.svg') ||
+                         originalUrl.includes('.webp'));
+
+    // Si no es una ruta válida ni un archivo estático, es una página inexistente
+    if (!isValidRoute && !isStaticFile && !originalUrl.startsWith('/assets/')) {
+      console.log(`🚨 Ruta no encontrada: ${originalUrl} - Enviando 404`);
+      res.status(404);
+    }
 
     commonEngine
       .render({
@@ -89,7 +124,13 @@ export function app(): express.Express {
           { provide: RESPONSE, useValue: res }
         ],
       })
-      .then((html) => res.send(html))
+      .then((html) => {
+        // Si ya se estableció el status 404, asegurar que se mantenga
+        if (res.statusCode === 404) {
+          console.log(`📤 Enviando respuesta 404 para: ${originalUrl}`);
+        }
+        res.send(html);
+      })
       .catch((err) => next(err));
   });
 

@@ -1,4 +1,6 @@
 {
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist/browser",
   "redirects": [
     {
       "source": "/home",
@@ -6,7 +8,7 @@
       "permanent": true
     },
     {
-      "source": "/index.html",
+      "source": "/index.html", 
       "destination": "/",
       "permanent": true
     },
@@ -14,6 +16,32 @@
       "source": "/index",
       "destination": "/",
       "permanent": true
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "^/$",
+      "destination": "/index.html"
+    },
+    {
+      "source": "^/(pricing|blog|contact)/?$",
+      "destination": "/index.html"
+    },
+    {
+      "source": "^/article/([^/]+)/?$",
+      "destination": "/index.html"
+    },
+    {
+      "source": "^/assets/(.*)",
+      "destination": "/assets/$1"
+    },
+    {
+      "source": "^/(.*\\.(js|css|ico|png|jpg|svg|webp|woff|woff2|ttf|eot))$",
+      "destination": "/$1"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/api/404"
     }
   ],
   "headers": [
