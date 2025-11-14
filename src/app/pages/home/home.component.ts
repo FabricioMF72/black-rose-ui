@@ -18,21 +18,20 @@ export class HomeComponent {
   constructor(private seoService: SeoService) {}
 
   ngOnInit() {
-    this.seoService.updateMetaTags({
-      title: 'Kendra Sáenz Photography - Capturing Unforgettable Moments in Costa Rica',
-      description: 'Professional wedding and portrait photographer in Uvita & Pérez Zeledón, Costa Rica. Capturing your special moments with artistic vision and passion.',
-      keywords: 'Costa Rica photographer, Uvita wedding photographer, Pérez Zeledón photography, wedding photography, outdoor photography, portrait photography',
-      url: 'https://black-rose-ui-gamma.vercel.app/',
-      type: 'website'
-    });
+    // Manejar posibles duplicados primero
+    this.seoService.handlePotentialDuplicates();
+    
+    // Usar el método específico para Home que incluye canonical
+    this.seoService.setHomeSeo();
 
-    // Structured data for home page
+    // Structured data for home page - usar URL consistente del service
+    const baseUrl = this.seoService.getBaseUrl();
     const structuredData = {
       "@context": "https://schema.org",
       "@type": "Person",
       "name": "Kendra Sáenz",
       "jobTitle": "Professional Photographer",
-      "url": "https://black-rose-ui-gamma.vercel.app/",
+      "url": `${baseUrl}/`,
       "sameAs": [
         "https://instagram.com/kendrasaenzphoto",
         "https://facebook.com/kendrasaenzphoto"

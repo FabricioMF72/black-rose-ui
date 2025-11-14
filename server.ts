@@ -4,6 +4,7 @@ import express from 'express';
 import { fileURLToPath } from 'node:url';
 import { dirname, join, resolve } from 'node:path';
 import bootstrap from './src/main.server';
+import { RESPONSE } from './src/app/services/http-status.service';
 
 // The Express app is exported so that it can be used by serverless Functions.
 export function app(): express.Express {
@@ -16,6 +17,54 @@ export function app(): express.Express {
 
   server.set('view engine', 'html');
   server.set('views', browserDistFolder);
+
+  // Configurar headers de seguridad incluyendo CSP
+  server.use((req, res, next) => {
+    // ============================================
+    // HEADERS DE SEGURIDAD CRÍTICOS
+    // ============================================
+    
+    // X-Frame-Options - PREVIENE CLICKJACKING
+    res.setHeader('X-Frame-Options', 'DENY');
+    console.log('🛡️ X-Frame-Options aplicado: DENY');
+    
+    // Content Security Policy
+    const csp = [
+      "default-src 'self'",
+      "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.emailjs.com https://unpkg.com https://cdnjs.cloudflare.com https://www.googletagmanager.com https://www.google-analytics.com https://vercel.live",
+      "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com",
+      "font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com data:",
+      "img-src 'self' data: https: blob:",
+      "media-src 'self' https:",
+      "connect-src 'self' https://api.emailjs.com https://www.google-analytics.com https://vitals.vercel-analytics.com https://vercel.live wss://vercel.live",
+      "frame-src 'none'", // TAMBIÉN previene iframes
+      "object-src 'none'",
+      "base-uri 'self'",
+      "form-action 'self' https://api.emailjs.com",
+      "worker-src 'self' blob:",
+      "manifest-src 'self'",
+      "upgrade-insecure-requests",
+      "block-all-mixed-content"
+    ].join('; ');
+
+    res.setHeader('Content-Security-Policy', csp);
+    
+    // Headers de seguridad adicionales
+    res.setHeader('X-Content-Type-Options', 'nosniff');
+    res.setHeader('X-XSS-Protection', '1; mode=block');
+    res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
+    res.setHeader('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
+    
+    // Strict Transport Security (HTTPS)
+    res.setHeader('Strict-Transport-Security', 'max-age=31536000; includeSubDomains; preload');
+    
+    // Cache Control para resources de seguridad
+    if (req.url.includes('security') || req.url.includes('frame')) {
+      res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+    }
+    
+    next();
+  });
 
   // Example Express Rest API endpoints
   // server.get('/api/**', (req, res) => { });
@@ -35,7 +84,10 @@ export function app(): express.Express {
         documentFilePath: indexHtml,
         url: `${protocol}://${headers.host}${originalUrl}`,
         publicPath: browserDistFolder,
-        providers: [{ provide: APP_BASE_HREF, useValue: baseUrl }],
+        providers: [
+          { provide: APP_BASE_HREF, useValue: baseUrl },
+          { provide: RESPONSE, useValue: res }
+        ],
       })
       .then((html) => res.send(html))
       .catch((err) => next(err));

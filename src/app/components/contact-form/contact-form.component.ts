@@ -1,8 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, input } from '@angular/core';
+import { Component, Input, input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from "@angular/forms";
 import { ActivatedRoute } from '@angular/router';
 import { MailService } from '../../services/mail.service';
+import { SeoService } from '../../services/seo.service';
 
 @Component({
   selector: 'app-contact-form',
@@ -11,13 +12,18 @@ import { MailService } from '../../services/mail.service';
   templateUrl: './contact-form.component.html',
   styleUrl: './contact-form.component.scss'
 })
-export class ContactFormComponent {
+export class ContactFormComponent implements OnInit {
   packageName: string | null = null;
   contactForm: FormGroup;
   isSending = false;
   sendSuccess: boolean | null = null;
 
-  constructor(private fb: FormBuilder, private route: ActivatedRoute, private mailService: MailService) {
+  constructor(
+    private fb: FormBuilder, 
+    private route: ActivatedRoute, 
+    private mailService: MailService,
+    private seoService: SeoService
+  ) {
     this.route.queryParams.subscribe(params => {
       this.packageName = params['package'] || null;
     });
@@ -29,6 +35,11 @@ export class ContactFormComponent {
       service: [this.packageName, Validators.required],
       message: [""]
     });
+  }
+
+  ngOnInit(): void {
+    // Configurar SEO para la página de contacto
+    this.seoService.setContactSeo();
   }
 
   onSubmit(): void {

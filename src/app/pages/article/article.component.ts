@@ -45,18 +45,22 @@ export class ArticleComponent {
   }
 
   private updateSEO(article: Article) {
-    const baseUrl = 'https://black-rose-ui-gamma.vercel.app';
+    const baseUrl = this.seoService.getBaseUrl(); // URL consistente del service centralizado
     const articleUrl = `${baseUrl}/article/${article.link}`;
     const imageUrl = article.images.length > 0 ? `${baseUrl}/${article.images[0]}` : `${baseUrl}/main-image.jpg`;
 
-    // Update meta tags
-    this.seoService.updateMetaTags({
+    // Generar description única y específica para el artículo
+    const uniqueDescription = this.generateUniqueArticleDescription(article);
+    
+    // Update meta tags with canonical URL usando validación anti-duplicados
+    this.seoService.setSeoWithValidation({
       title: `${article.title} - Kendra Sáenz Photography`,
-      description: article.mainParagraph.substring(0, 160) + '...',
+      description: uniqueDescription,
       keywords: `${article.location}, wedding photography, Costa Rica photography, ${article.name}`,
       image: imageUrl,
-      url: articleUrl,
-      type: 'article'
+      canonical: articleUrl, // Establecer URL canónica explícita
+      type: 'article',
+      pagePath: `article-${article.name}` // Identificador único para el artículo
     });
 
     // Create structured data for Google
@@ -87,6 +91,29 @@ export class ArticleComponent {
     };
 
     this.seoService.createStructuredData(structuredData);
+  }
+
+  /**
+   * Generar description única para cada artículo
+   */
+  private generateUniqueArticleDescription(article: Article): string {
+    // Extraer las primeras 2 oraciones del párrafo principal
+    const sentences = article.mainParagraph.split('.').filter(s => s.trim().length > 0);
+    const firstSentences = sentences.slice(0, 2).join('. ') + '.';
+    
+    // Agregar información específica del artículo
+    const locationInfo = article.location ? ` Located in ${article.location}, ` : ' ';
+    const imageCount = article.images ? ` Featuring ${article.images.length} stunning photographs.` : '';
+    
+    // Construir description única
+    let description = firstSentences + locationInfo + 'this photography story showcases authentic moments and artistic vision.' + imageCount;
+    
+    // Asegurar que no exceda 160 caracteres
+    if (description.length > 160) {
+      description = description.substring(0, 157) + '...';
+    }
+    
+    return description;
   }
 
   updateVisibleImages() {

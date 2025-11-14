@@ -16,13 +16,8 @@ export class PricingComponent {
   constructor(private seoService: SeoService) {}
 
   ngOnInit() {
-    this.seoService.updateMetaTags({
-      title: 'Photography Services - Events, Outdoor & Business | Kendra Sáenz Photography',
-      description: 'Discover our photography services in Costa Rica: Event coverage, outdoor sessions and business photography. Professional photography in Uvita and Pérez Zeledón.',
-      keywords: 'photography services Costa Rica, event coverage, outdoor sessions, business photography, weddings Uvita, photographer Pérez Zeledón',
-      url: 'https://black-rose-ui-gamma.vercel.app/pricing',
-      type: 'website'
-    });
+    // Usar el método específico para Pricing que incluye canonical
+    this.seoService.setPricingSeo();
   }
 
   pricingPackages = [
